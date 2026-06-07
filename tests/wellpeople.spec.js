@@ -18,5 +18,6 @@ test('test', async ({ page }) => {
   await expect(page.getByRole('listitem').filter({ hasText: 'expressionist curling mascara' })).toBeVisible();
   await expect(page.locator('.product-list > product-card > .product-card__figure > .product-card__media').first()).toBeVisible();
   await page.getByRole('listitem').filter({ hasText: 'expressionist curling mascara' }).click();
-    
+  //close the browser
+  page.close();  
 });
