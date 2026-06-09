@@ -1,5 +1,15 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
+import { faker } from '@faker-js/faker';
 
-test('test', async ({ page }) => {
-  await page.goto('https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dorangehrmlogin%26oq%3Dorangehrmlogin%26gs_lcrp%3DEgZjaHJvbWUyBggAEEUYOdIBCDY5MzNqMGoyqAIAsAIB%26sourceid%3Dchrome%26ie%3DUTF-8%26sei%3Dj_kRapelL9Su4-EPsLqZ6QM&q=EgQxzKTRGJDzx9AGIjBkYiRzMo62kN-ZlNuk4O1H2bEtyJxWH9K4tF7bv4SDoqRThWZI-DDH3ufGB82Pk9cyAVJaAUM');
+test('Register with Faker data', async ({ page }) => {
+  // Generates random text containing letters and numbers
+  const randomAlphaNumeric = faker.string.alphanumeric(10); 
+  const randomPassword = faker.internet.password({ length: 12 });
+  const randomEmail = faker.internet.email();
+  const javascriptmethod = Math.random().toString(36).substring(2, 7); // Generates a random first name
+
+  console.log('Random Alphanumeric:', randomAlphaNumeric);
+  console.log('Random Password:', randomPassword);
+  console.log('Random Email:', randomEmail);
+  console.log('Using built-in method:', javascriptmethod);
 });
