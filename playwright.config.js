@@ -51,13 +51,13 @@ export default defineConfig({
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'], screenshot: 'on', video: 'on', viewport: { width: 1536, height: 695 } },
+      use: { ...devices['Desktop Firefox'], screenshot: 'on', video: 'on', trace: 'on', viewport: { width: 1536, height: 695 } },
      
     },
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'], screenshot: 'on', video: 'on', viewport: { width: 1536, height: 695 } },
+      use: { ...devices['Desktop Safari'], screenshot: 'on', video: 'on', trace: 'on', viewport: { width: 1536, height: 695 } },
     },
 
     /* Test against mobile viewports. */

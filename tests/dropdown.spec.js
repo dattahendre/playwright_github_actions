@@ -21,16 +21,32 @@ test('test', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'State:' })).toBeVisible();
   // getting all the option texts of the dropdown and printing them
   const statedropdown = await page.locator('#state option').allTextContents();
-  console.log(statedropdown);
+  //get the count of dropdown options
+  const dropdowncount = await page.locator('#state option').count();
+  console.log("Total options in state dropdown:", dropdowncount);
+  //validate the dropdown options whether it contains the expected values
+  await expect(statedropdown.includes('Maharashtra')).toBeTruthy();
   // print values one by one
   for (let i = 0; i < statedropdown.length; i++) {
     console.log(statedropdown[i]);
   }
-  await page.locator('#state').selectOption({ label: 'Maharashtra' });
+  //select dropdown value by label
+  //await page.locator('#state').selectOption({ label: 'Maharashtra' });
+  //selct dropdown value by value
+  //await page.locator('#state').selectOption({ value: 'MP' });
+  //select dropdown value by index
+  await page.locator('#state').selectOption({ index: 3 });  
+
   await expect(page.getByRole('heading', { name: 'Hobbies:' })).toBeVisible();
   //getting all the options of the dropdown and printing in console
   // 1) Get all option texts (not the select text)
 const hobbiesdropdown = await page.locator('#hobbies option').allTextContents();
+//verify the dropdown options contains expected values
+await expect(hobbiesdropdown.includes('Reading')).toBeTruthy();
+// print values one by one
+for (let i = 0; i < hobbiesdropdown.length; i++) {
+  console.log(hobbiesdropdown[i]);
+}
 
 // 2) Assert the array
 await expect(hobbiesdropdown).toEqual(['Select Multiple Hobbies','Playing','Reading','Swimming','Singing','Dancing']);
@@ -44,5 +60,7 @@ const successMessage = page.getByText(/Signup successfully, Please login!/i);
 
 // 2. Assert visibility (Playwright will auto-wait up to 5000ms for it to appear)
 await expect(successMessage).toBeVisible();
+//wait for msg to disappear
+await page.waitForTimeout(2000);
 await page.close();
 });
