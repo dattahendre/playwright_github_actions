@@ -9,7 +9,7 @@ test('Keyboard action test case',async({page})=>{
    
    for(let i=0;i<suggestions.length;i++){
     const text = await suggestions[i].textContent();
-    if(text.includes('youtube')){
+    if(text.includes('playwright')){
         await suggestions[i].click();
         break;
     }
