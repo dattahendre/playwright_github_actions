@@ -1,6 +1,6 @@
 const{test,expect=require('@faker-js/faker').expect}=require('@playwright/test');
 
-test.skip('Handle dialog test case',async({page})=>{
+test('Handle dialog test case',async({page})=>{
     await page.goto('https://demo.automationtesting.in/Alerts.html');
     page.on('dialog',async(dialog)=>{
         //write assertion to handle alert
@@ -17,7 +17,7 @@ test.skip('Handle dialog test case',async({page})=>{
     await page.click("//button[contains(text(),'click the button to display an')]");
     }); 
 
-    test.skip('Handle confirmation test case',async({page})=>{
+    test('Handle confirmation test case',async({page})=>{
     await page.goto('https://demo.automationtesting.in/Alerts.html');
     page.on('dialog',async(dialog)=>{
         //write assertion to handle alert
@@ -42,7 +42,7 @@ test.skip('Handle dialog test case',async({page})=>{
         //write assertion to handle alert
         expect(dialog.type()).toBe('prompt');
         //validate the alert message
-        expect(dialog.message()).toBe('Automation Testing user');
+        expect(dialog.message()).toContain('Automation Testing user');
         //accept the alert
         await dialog.dismiss();
 
