@@ -44,7 +44,7 @@ test('Handle dialog test case',async({page})=>{
         //validate the alert message
         expect(dialog.message()).toContain('Automation Testing user');
         //accept the alert
-        await dialog.dismiss();
+        await dialog.accept('Playwright');
 
         
     })

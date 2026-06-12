@@ -86,13 +86,13 @@ await page.getByRole('option', { name: 'Admin' }).click();
 // Click the element to trigger the next user action.
 await page.getByPlaceholder('Type for hints...').click();
 // Fill the target input field with the specified value.
-await page.getByPlaceholder('Type for hints...').fill('new akhil user',{delay:1500});
+await page.getByPlaceholder('Type for hints...').fill('manda',{delay:1500});
 //wait for the dropdown options to appear
 // Wait briefly to allow UI updates or manual observation.
 await page.waitForTimeout(4000);
 //slect user from dropdown
 // Click the element to trigger the next user action.
-await page.getByRole('option', { name: 'new akhil user' }).first().click();
+await page.getByRole('option', { name: 'manda' }).first().click();
 
   // Capture a screenshot of the current browser state.
   await page.screenshot({ path: 'screenshot/login-search-admin.png' });
