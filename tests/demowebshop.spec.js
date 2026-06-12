@@ -1,21 +1,31 @@
 // Import Playwright test helpers and any required libraries.
 import { test, expect } from '@playwright/test';
-
+// 1. Import your Screenshot POM class (adjust path if your folders are structured differently)
+const { ScreenshotPage } = require('./pages/ScreenshotPage');
 // Define the test case and assign a descriptive name.
 test('test', async ({ page }) => {
+   // Instantiate the screenshot class
+    const screenshotPage = new ScreenshotPage(page);
   // Navigate the browser to the target test page URL.
   await page.goto('https://demowebshop.tricentis.com/');
+  // 4. Take screenshot after open URL
+    await screenshotPage.takeRandomScreenshot();
   // Assert that the expected element is visible on the page.
   await expect(page.getByRole('link', { name: 'Tricentis Demo Web Shop' })).toBeVisible();
   //click on home page button computers
   // Click the element to trigger the next user action.
+    await screenshotPage.takeRandomScreenshot();
   await page.getByRole('link', { name: 'Computers' }).first().click();
+    await screenshotPage.takeRandomScreenshot();
   // Click the element to trigger the next user action.
   await page.getByRole('link', { name: 'Desktops' }).first().click();
+    await screenshotPage.takeRandomScreenshot();
   // Assert that the expected element is visible on the page.
   await expect(page.getByRole('heading', { name: 'Desktops' })).toBeVisible();
+    await screenshotPage.takeRandomScreenshot();
   // Assert that the expected element is visible on the page.
   await expect(page.locator('.item-box').first()).toBeVisible();
+    await screenshotPage.takeRandomScreenshot();
   // Click the element to trigger the next user action.
   await page.getByRole('button', { name: 'Add to cart' }).first().click();
   // Assert that the expected element is visible on the page.
