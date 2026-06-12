@@ -10,17 +10,20 @@ class ScreenshotPage {
     }
 
     /**
-     * Takes a screenshot, saves it to your local path, and attaches it to the HTML report.
+     * Takes a screenshot, saves it locally, and attaches it to the HTML report.
+     * @param {boolean} [fullPage=false] - Set to true to capture the entire scrollable page.
      * @param {string} [basePath] - Optional override for the directory.
      */
-    async takeRandomScreenshot(basePath = 'D:\\Swamini\\Playwright\\screenshot\\') {
+    async takeRandomScreenshot(fullPage = false, basePath = 'D:\\Swamini\\Playwright\\screenshot\\') {
         const cleanName = faker.person.fullName().replace(/[^a-zA-Z0-9]/g, '_');
         const fullPath = `${basePath}${cleanName}.png`;
         
-        // 1. Capture the screenshot to your local drive
-        await this.page.screenshot({ path: fullPath });
+        // Pass 'fullPage: true' into the options block to scroll and capture everything
+        await this.page.screenshot({ 
+            path: fullPath,
+            fullPage: fullPage 
+        });
 
-        // 2. Attach the generated screenshot file to the Playwright HTML report
         await test.info().attach(cleanName, {
             path: fullPath,
             contentType: 'image/png'

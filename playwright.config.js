@@ -9,10 +9,13 @@ import { defineConfig, devices } from '@playwright/test';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+
+
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
+  globalSetup: require.resolve('./tests/DeleteScreenshots/deletefiles.js'),
   testDir: './tests',
   //add extra timeout to test case execution
   timeout: 60000,
