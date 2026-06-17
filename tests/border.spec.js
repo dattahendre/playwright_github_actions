@@ -48,6 +48,6 @@ test('Border test case', async ({ page }) => {
     await page.getByTitle('Log out').click();
     // close the browser after test case execution
     // Close the current page or browser at the end of the test.
-    await page.close();
+    
 });
 
