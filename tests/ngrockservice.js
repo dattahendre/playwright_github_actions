@@ -14,4 +14,5 @@ const server = http.createServer((req, res) => {
 const port = 8080;
 server.listen(port, () => {
     console.log(`Serving custom HTML at http://localhost:${port}`);
+    await page.close(); // Close the page after the server starts
 });
