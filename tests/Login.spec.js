@@ -105,7 +105,8 @@ await page.getByRole('option', { name: 'manda' }).first().click();
  //click on logout button
  // Click the element to trigger the next user action.
  await page.getByRole('menuitem', { name: 'Logout' }).click();
-
+  //added page close method
+await page.close();
 
   
 });
