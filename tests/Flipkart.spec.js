@@ -43,6 +43,6 @@ test('Flipkart search and open product', async ({ page, browser }) => {
   await expect(productPage.locator('body')).toContainText('₹');
   await productPage.close();
   // Close the current page or browser at the end of the test.
-  await browser.close();
+  
 });
 
