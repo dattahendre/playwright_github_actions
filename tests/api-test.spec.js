@@ -408,19 +408,18 @@ test.describe('API PUT Request Tests - Update Operations', () => {
     expect(response.status()).toBe(200);
   });
 
-  // Test Dataset 6: Update non-existent post
-  test('should return appropriate status for non-existent post - Dataset 6', async ({ request }) => {
+  // Test Dataset 6: Update non-existent post (negative case)
+  test('should handle update of non-existent post - Dataset 6', async ({ request }) => {
     const updateData = {
-      title: 'Update Non-existent',
-      body: 'This should fail',
+      title: 'Non-existent Post Update',
+      body: 'This update may return 404',
       userId: 1
     };
     
-    const response = await request.put('https://jsonplaceholder.typicode.com/posts/99999', {
+    const response = await request.put('https://jsonplaceholder.typicode.com/posts/999999', {
       data: updateData
     });
     
-    // May return 404 or still succeed depending on API
     expect([200, 404]).toContain(response.status());
   });
 
