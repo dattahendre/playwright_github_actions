@@ -22,7 +22,8 @@ pipeline {
                 // Runs the specific folder using the headless approach for stability
                 // Note: We use 'all' status inside catchError so the report publishes even if tests fail
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    bat 'call npx playwright test "tests\\JenkinsPipelineExecution" --project=chromium'
+                    bat 'call npx playwright test tests/JenkinsPipelineExecution --project=chromium'
+                
                 }
             }
         }
