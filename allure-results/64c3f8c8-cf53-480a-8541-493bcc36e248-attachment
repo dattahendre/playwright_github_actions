@@ -1,0 +1,837 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: codegen.spec.js >> test
+- Location: tests\codegen.spec.js:5:5
+
+# Error details
+
+```
+Test timeout of 60000ms exceeded.
+```
+
+```
+Error: locator.click: Test timeout of 60000ms exceeded.
+Call log:
+  - waiting for getByRole('option', { name: 'Admin' })
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - generic:
+    - complementary [ref=e4]:
+      - navigation "Sidepanel" [ref=e5]:
+        - generic [ref=e6]:
+          - link "client brand banner" [ref=e7] [cursor=pointer]:
+            - /url: https://www.orangehrm.com/
+            - img "client brand banner" [ref=e9]
+          - text: 
+        - generic [ref=e10]:
+          - generic [ref=e11]:
+            - generic [ref=e12]:
+              - textbox "Search" [ref=e15]
+              - button "" [ref=e16] [cursor=pointer]:
+                - generic [ref=e17]: 
+            - separator [ref=e18]
+          - list [ref=e19]:
+            - listitem [ref=e20]:
+              - link "Admin" [ref=e21] [cursor=pointer]:
+                - /url: /web/index.php/admin/viewAdminModule
+                - generic [ref=e24]: Admin
+            - listitem [ref=e25]:
+              - link "PIM" [ref=e26] [cursor=pointer]:
+                - /url: /web/index.php/pim/viewPimModule
+                - generic [ref=e40]: PIM
+            - listitem [ref=e41]:
+              - link "Leave" [ref=e42] [cursor=pointer]:
+                - /url: /web/index.php/leave/viewLeaveModule
+                - generic [ref=e45]: Leave
+            - listitem [ref=e46]:
+              - link "Time" [ref=e47] [cursor=pointer]:
+                - /url: /web/index.php/time/viewTimeModule
+                - generic [ref=e53]: Time
+            - listitem [ref=e54]:
+              - link "Recruitment" [ref=e55] [cursor=pointer]:
+                - /url: /web/index.php/recruitment/viewRecruitmentModule
+                - generic [ref=e61]: Recruitment
+            - listitem [ref=e62]:
+              - link "My Info" [ref=e63] [cursor=pointer]:
+                - /url: /web/index.php/pim/viewMyDetails
+                - generic [ref=e69]: My Info
+            - listitem [ref=e70]:
+              - link "Performance" [ref=e71] [cursor=pointer]:
+                - /url: /web/index.php/performance/viewPerformanceModule
+                - generic [ref=e79]: Performance
+            - listitem [ref=e80]:
+              - link "Dashboard" [ref=e81] [cursor=pointer]:
+                - /url: /web/index.php/dashboard/index
+                - generic [ref=e84]: Dashboard
+            - listitem [ref=e85]:
+              - link "Directory" [ref=e86] [cursor=pointer]:
+                - /url: /web/index.php/directory/viewDirectory
+                - generic [ref=e89]: Directory
+            - listitem [ref=e90]:
+              - link "Maintenance" [ref=e91] [cursor=pointer]:
+                - /url: /web/index.php/maintenance/viewMaintenanceModule
+                - generic [ref=e95]: Maintenance
+            - listitem [ref=e96]:
+              - link "Claim" [ref=e97] [cursor=pointer]:
+                - /url: /web/index.php/claim/viewClaimModule
+                - img [ref=e100]
+                - generic [ref=e104]: Claim
+            - listitem [ref=e105]:
+              - link "Buzz" [ref=e106] [cursor=pointer]:
+                - /url: /web/index.php/buzz/viewBuzz
+                - generic [ref=e109]: Buzz
+    - banner [ref=e110]:
+      - generic [ref=e111]:
+        - generic [ref=e112]:
+          - text: 
+          - generic [ref=e113]:
+            - heading "Admin" [level=6] [ref=e114]
+            - heading "/ User Management" [level=6] [ref=e115]
+        - link "Upgrade" [ref=e117]:
+          - /url: https://orangehrm.com/open-source/upgrade-to-advanced
+          - button "Upgrade" [ref=e118] [cursor=pointer]: Upgrade
+        - list [ref=e124]:
+          - listitem [ref=e125]:
+            - generic [ref=e126] [cursor=pointer]:
+              - img "profile picture" [ref=e127]
+              - paragraph [ref=e128]: manda user
+              - generic [ref=e129]: 
+      - navigation "Topbar Menu" [ref=e131]:
+        - list [ref=e132]:
+          - listitem [ref=e133] [cursor=pointer]:
+            - generic [ref=e134]:
+              - text: More
+              - generic [ref=e135]: 
+          - button "" [ref=e137] [cursor=pointer]:
+            - generic [ref=e138]: 
+  - generic [ref=e139]:
+    - generic [ref=e141]:
+      - generic [ref=e142]:
+        - generic [ref=e143]:
+          - heading "System Users" [level=5] [ref=e145]
+          - button "" [ref=e148] [cursor=pointer]:
+            - generic [ref=e149]: 
+        - separator [ref=e150]
+        - generic [ref=e152]:
+          - generic [ref=e154]:
+            - generic [ref=e156]:
+              - generic [ref=e158]: Username
+              - textbox [ref=e160]: Admin
+            - generic [ref=e162]:
+              - generic [ref=e164]: User Role
+              - generic [ref=e167] [cursor=pointer]:
+                - generic [ref=e168]: "-- Select --"
+                - generic [ref=e170]: 
+            - generic [ref=e172]:
+              - generic [ref=e174]: Employee Name
+              - textbox "Type for hints..." [ref=e178]
+            - generic [ref=e180]:
+              - generic [ref=e182]: Status
+              - generic [ref=e185] [cursor=pointer]:
+                - generic [ref=e186]: "-- Select --"
+                - generic [ref=e188]: 
+          - separator [ref=e189]
+          - generic [ref=e190]:
+            - button "Reset" [ref=e191] [cursor=pointer]
+            - button "Search" [ref=e192] [cursor=pointer]
+      - generic [ref=e193]:
+        - button " Add" [ref=e195] [cursor=pointer]:
+          - generic [ref=e196]: 
+          - text: Add
+        - generic [ref=e197]:
+          - separator [ref=e198]
+          - generic [ref=e200]: (28) Records Found
+        - table [ref=e202]:
+          - rowgroup [ref=e203]:
+            - row " Username  User Role  Employee Name  Status  Actions" [ref=e204]:
+              - columnheader "" [ref=e205]:
+                - generic [ref=e207] [cursor=pointer]:
+                  - checkbox "" [ref=e208]
+                  - generic [ref=e210]: 
+              - columnheader "Username " [ref=e211]:
+                - text: Username
+                - generic [ref=e212]:
+                  - generic [ref=e213] [cursor=pointer]: 
+                  - text:  
+              - columnheader "User Role " [ref=e214]:
+                - text: User Role
+                - generic [ref=e215]:
+                  - generic [ref=e216] [cursor=pointer]: 
+                  - text:  
+              - columnheader "Employee Name " [ref=e217]:
+                - text: Employee Name
+                - generic [ref=e218]:
+                  - generic [ref=e219] [cursor=pointer]: 
+                  - text:  
+              - columnheader "Status " [ref=e220]:
+                - text: Status
+                - generic [ref=e221]:
+                  - generic [ref=e222] [cursor=pointer]: 
+                  - text:  
+              - columnheader "Actions" [ref=e223]
+          - rowgroup [ref=e224]:
+            - row " .jackasmithyyy ESS Jakazzzt Smitttthh Enabled  " [ref=e226]:
+              - cell "" [ref=e227]:
+                - generic [ref=e230] [cursor=pointer]:
+                  - checkbox "" [ref=e231]
+                  - generic [ref=e233]: 
+              - cell ".jackasmithyyy" [ref=e234]:
+                - generic [ref=e235]: .jackasmithyyy
+              - cell "ESS" [ref=e236]:
+                - generic [ref=e237]: ESS
+              - cell "Jakazzzt Smitttthh" [ref=e238]:
+                - generic [ref=e239]: Jakazzzt Smitttthh
+              - cell "Enabled" [ref=e240]:
+                - generic [ref=e241]: Enabled
+              - cell " " [ref=e242]:
+                - generic [ref=e243]:
+                  - button "" [ref=e244] [cursor=pointer]:
+                    - generic [ref=e245]: 
+                  - button "" [ref=e246] [cursor=pointer]:
+                    - generic [ref=e247]: 
+            - row " Admin Admin manda user Enabled  " [ref=e249]:
+              - cell "" [ref=e250]:
+                - generic [ref=e254]:
+                  - checkbox "" [ref=e255]
+                  - generic [ref=e257]: 
+              - cell "Admin" [ref=e258]:
+                - generic [ref=e259]: Admin
+              - cell "Admin" [ref=e260]:
+                - generic [ref=e261]: Admin
+              - cell "manda user" [ref=e262]:
+                - generic [ref=e263]: manda user
+              - cell "Enabled" [ref=e264]:
+                - generic [ref=e265]: Enabled
+              - cell " " [ref=e266]:
+                - generic [ref=e267]:
+                  - button "" [ref=e268] [cursor=pointer]:
+                    - generic [ref=e269]: 
+                  - button "" [ref=e270] [cursor=pointer]:
+                    - generic [ref=e271]: 
+            - row " ankit Admin vivek kalyankar Enabled  " [ref=e273]:
+              - cell "" [ref=e274]:
+                - generic [ref=e277] [cursor=pointer]:
+                  - checkbox "" [ref=e278]
+                  - generic [ref=e280]: 
+              - cell "ankit" [ref=e281]:
+                - generic [ref=e282]: ankit
+              - cell "Admin" [ref=e283]:
+                - generic [ref=e284]: Admin
+              - cell "vivek kalyankar" [ref=e285]:
+                - generic [ref=e286]: vivek kalyankar
+              - cell "Enabled" [ref=e287]:
+                - generic [ref=e288]: Enabled
+              - cell " " [ref=e289]:
+                - generic [ref=e290]:
+                  - button "" [ref=e291] [cursor=pointer]:
+                    - generic [ref=e292]: 
+                  - button "" [ref=e293] [cursor=pointer]:
+                    - generic [ref=e294]: 
+            - row " Bala364797 ESS Vasanth .V Enabled  " [ref=e296]:
+              - cell "" [ref=e297]:
+                - generic [ref=e300] [cursor=pointer]:
+                  - checkbox "" [ref=e301]
+                  - generic [ref=e303]: 
+              - cell "Bala364797" [ref=e304]:
+                - generic [ref=e305]: Bala364797
+              - cell "ESS" [ref=e306]:
+                - generic [ref=e307]: ESS
+              - cell "Vasanth .V" [ref=e308]:
+                - generic [ref=e309]: Vasanth .V
+              - cell "Enabled" [ref=e310]:
+                - generic [ref=e311]: Enabled
+              - cell " " [ref=e312]:
+                - generic [ref=e313]:
+                  - button "" [ref=e314] [cursor=pointer]:
+                    - generic [ref=e315]: 
+                  - button "" [ref=e316] [cursor=pointer]:
+                    - generic [ref=e317]: 
+            - row " emp1f9d1d ESS Rahul3035 Kumar Enabled  " [ref=e319]:
+              - cell "" [ref=e320]:
+                - generic [ref=e323] [cursor=pointer]:
+                  - checkbox "" [ref=e324]
+                  - generic [ref=e326]: 
+              - cell "emp1f9d1d" [ref=e327]:
+                - generic [ref=e328]: emp1f9d1d
+              - cell "ESS" [ref=e329]:
+                - generic [ref=e330]: ESS
+              - cell "Rahul3035 Kumar" [ref=e331]:
+                - generic [ref=e332]: Rahul3035 Kumar
+              - cell "Enabled" [ref=e333]:
+                - generic [ref=e334]: Enabled
+              - cell " " [ref=e335]:
+                - generic [ref=e336]:
+                  - button "" [ref=e337] [cursor=pointer]:
+                    - generic [ref=e338]: 
+                  - button "" [ref=e339] [cursor=pointer]:
+                    - generic [ref=e340]: 
+            - row " emp501b9a ESS Rahul7801 Kumar Enabled  " [ref=e342]:
+              - cell "" [ref=e343]:
+                - generic [ref=e346] [cursor=pointer]:
+                  - checkbox "" [ref=e347]
+                  - generic [ref=e349]: 
+              - cell "emp501b9a" [ref=e350]:
+                - generic [ref=e351]: emp501b9a
+              - cell "ESS" [ref=e352]:
+                - generic [ref=e353]: ESS
+              - cell "Rahul7801 Kumar" [ref=e354]:
+                - generic [ref=e355]: Rahul7801 Kumar
+              - cell "Enabled" [ref=e356]:
+                - generic [ref=e357]: Enabled
+              - cell " " [ref=e358]:
+                - generic [ref=e359]:
+                  - button "" [ref=e360] [cursor=pointer]:
+                    - generic [ref=e361]: 
+                  - button "" [ref=e362] [cursor=pointer]:
+                    - generic [ref=e363]: 
+            - row " emp5b500d ESS Rahul7641 Kumar Enabled  " [ref=e365]:
+              - cell "" [ref=e366]:
+                - generic [ref=e369] [cursor=pointer]:
+                  - checkbox "" [ref=e370]
+                  - generic [ref=e372]: 
+              - cell "emp5b500d" [ref=e373]:
+                - generic [ref=e374]: emp5b500d
+              - cell "ESS" [ref=e375]:
+                - generic [ref=e376]: ESS
+              - cell "Rahul7641 Kumar" [ref=e377]:
+                - generic [ref=e378]: Rahul7641 Kumar
+              - cell "Enabled" [ref=e379]:
+                - generic [ref=e380]: Enabled
+              - cell " " [ref=e381]:
+                - generic [ref=e382]:
+                  - button "" [ref=e383] [cursor=pointer]:
+                    - generic [ref=e384]: 
+                  - button "" [ref=e385] [cursor=pointer]:
+                    - generic [ref=e386]: 
+            - row " emp83be8f ESS Rahul Kumar Enabled  " [ref=e388]:
+              - cell "" [ref=e389]:
+                - generic [ref=e392] [cursor=pointer]:
+                  - checkbox "" [ref=e393]
+                  - generic [ref=e395]: 
+              - cell "emp83be8f" [ref=e396]:
+                - generic [ref=e397]: emp83be8f
+              - cell "ESS" [ref=e398]:
+                - generic [ref=e399]: ESS
+              - cell "Rahul Kumar" [ref=e400]:
+                - generic [ref=e401]: Rahul Kumar
+              - cell "Enabled" [ref=e402]:
+                - generic [ref=e403]: Enabled
+              - cell " " [ref=e404]:
+                - generic [ref=e405]:
+                  - button "" [ref=e406] [cursor=pointer]:
+                    - generic [ref=e407]: 
+                  - button "" [ref=e408] [cursor=pointer]:
+                    - generic [ref=e409]: 
+            - row " empb1ad69 ESS Rahul Kumar Enabled  " [ref=e411]:
+              - cell "" [ref=e412]:
+                - generic [ref=e415] [cursor=pointer]:
+                  - checkbox "" [ref=e416]
+                  - generic [ref=e418]: 
+              - cell "empb1ad69" [ref=e419]:
+                - generic [ref=e420]: empb1ad69
+              - cell "ESS" [ref=e421]:
+                - generic [ref=e422]: ESS
+              - cell "Rahul Kumar" [ref=e423]:
+                - generic [ref=e424]: Rahul Kumar
+              - cell "Enabled" [ref=e425]:
+                - generic [ref=e426]: Enabled
+              - cell " " [ref=e427]:
+                - generic [ref=e428]:
+                  - button "" [ref=e429] [cursor=pointer]:
+                    - generic [ref=e430]: 
+                  - button "" [ref=e431] [cursor=pointer]:
+                    - generic [ref=e432]: 
+            - row " empd205a3 ESS Rahul Kumar Enabled  " [ref=e434]:
+              - cell "" [ref=e435]:
+                - generic [ref=e438] [cursor=pointer]:
+                  - checkbox "" [ref=e439]
+                  - generic [ref=e441]: 
+              - cell "empd205a3" [ref=e442]:
+                - generic [ref=e443]: empd205a3
+              - cell "ESS" [ref=e444]:
+                - generic [ref=e445]: ESS
+              - cell "Rahul Kumar" [ref=e446]:
+                - generic [ref=e447]: Rahul Kumar
+              - cell "Enabled" [ref=e448]:
+                - generic [ref=e449]: Enabled
+              - cell " " [ref=e450]:
+                - generic [ref=e451]:
+                  - button "" [ref=e452] [cursor=pointer]:
+                    - generic [ref=e453]: 
+                  - button "" [ref=e454] [cursor=pointer]:
+                    - generic [ref=e455]: 
+            - row " empd9b6cf ESS Rahul Kumar Enabled  " [ref=e457]:
+              - cell "" [ref=e458]:
+                - generic [ref=e461] [cursor=pointer]:
+                  - checkbox "" [ref=e462]
+                  - generic [ref=e464]: 
+              - cell "empd9b6cf" [ref=e465]:
+                - generic [ref=e466]: empd9b6cf
+              - cell "ESS" [ref=e467]:
+                - generic [ref=e468]: ESS
+              - cell "Rahul Kumar" [ref=e469]:
+                - generic [ref=e470]: Rahul Kumar
+              - cell "Enabled" [ref=e471]:
+                - generic [ref=e472]: Enabled
+              - cell " " [ref=e473]:
+                - generic [ref=e474]:
+                  - button "" [ref=e475] [cursor=pointer]:
+                    - generic [ref=e476]: 
+                  - button "" [ref=e477] [cursor=pointer]:
+                    - generic [ref=e478]: 
+            - row " ess_user_01 ESS James Butler Enabled  " [ref=e480]:
+              - cell "" [ref=e481]:
+                - generic [ref=e484] [cursor=pointer]:
+                  - checkbox "" [ref=e485]
+                  - generic [ref=e487]: 
+              - cell "ess_user_01" [ref=e488]:
+                - generic [ref=e489]: ess_user_01
+              - cell "ESS" [ref=e490]:
+                - generic [ref=e491]: ESS
+              - cell "James Butler" [ref=e492]:
+                - generic [ref=e493]: James Butler
+              - cell "Enabled" [ref=e494]:
+                - generic [ref=e495]: Enabled
+              - cell " " [ref=e496]:
+                - generic [ref=e497]:
+                  - button "" [ref=e498] [cursor=pointer]:
+                    - generic [ref=e499]: 
+                  - button "" [ref=e500] [cursor=pointer]:
+                    - generic [ref=e501]: 
+            - row " FMLName ESS Qwerty LName Enabled  " [ref=e503]:
+              - cell "" [ref=e504]:
+                - generic [ref=e507] [cursor=pointer]:
+                  - checkbox "" [ref=e508]
+                  - generic [ref=e510]: 
+              - cell "FMLName" [ref=e511]:
+                - generic [ref=e512]: FMLName
+              - cell "ESS" [ref=e513]:
+                - generic [ref=e514]: ESS
+              - cell "Qwerty LName" [ref=e515]:
+                - generic [ref=e516]: Qwerty LName
+              - cell "Enabled" [ref=e517]:
+                - generic [ref=e518]: Enabled
+              - cell " " [ref=e519]:
+                - generic [ref=e520]:
+                  - button "" [ref=e521] [cursor=pointer]:
+                    - generic [ref=e522]: 
+                  - button "" [ref=e523] [cursor=pointer]:
+                    - generic [ref=e524]: 
+            - row " FMLName1 ESS FName LName Enabled  " [ref=e526]:
+              - cell "" [ref=e527]:
+                - generic [ref=e530] [cursor=pointer]:
+                  - checkbox "" [ref=e531]
+                  - generic [ref=e533]: 
+              - cell "FMLName1" [ref=e534]:
+                - generic [ref=e535]: FMLName1
+              - cell "ESS" [ref=e536]:
+                - generic [ref=e537]: ESS
+              - cell "FName LName" [ref=e538]:
+                - generic [ref=e539]: FName LName
+              - cell "Enabled" [ref=e540]:
+                - generic [ref=e541]: Enabled
+              - cell " " [ref=e542]:
+                - generic [ref=e543]:
+                  - button "" [ref=e544] [cursor=pointer]:
+                    - generic [ref=e545]: 
+                  - button "" [ref=e546] [cursor=pointer]:
+                    - generic [ref=e547]: 
+            - row " Jobinsam@6742 ESS Jobin Sam Enabled  " [ref=e549]:
+              - cell "" [ref=e550]:
+                - generic [ref=e553] [cursor=pointer]:
+                  - checkbox "" [ref=e554]
+                  - generic [ref=e556]: 
+              - cell "Jobinsam@6742" [ref=e557]:
+                - generic [ref=e558]: Jobinsam@6742
+              - cell "ESS" [ref=e559]:
+                - generic [ref=e560]: ESS
+              - cell "Jobin Sam" [ref=e561]:
+                - generic [ref=e562]: Jobin Sam
+              - cell "Enabled" [ref=e563]:
+                - generic [ref=e564]: Enabled
+              - cell " " [ref=e565]:
+                - generic [ref=e566]:
+                  - button "" [ref=e567] [cursor=pointer]:
+                    - generic [ref=e568]: 
+                  - button "" [ref=e569] [cursor=pointer]:
+                    - generic [ref=e570]: 
+            - row " johndoe_test01 ESS John Doe Enabled  " [ref=e572]:
+              - cell "" [ref=e573]:
+                - generic [ref=e576] [cursor=pointer]:
+                  - checkbox "" [ref=e577]
+                  - generic [ref=e579]: 
+              - cell "johndoe_test01" [ref=e580]:
+                - generic [ref=e581]: johndoe_test01
+              - cell "ESS" [ref=e582]:
+                - generic [ref=e583]: ESS
+              - cell "John Doe" [ref=e584]:
+                - generic [ref=e585]: John Doe
+              - cell "Enabled" [ref=e586]:
+                - generic [ref=e587]: Enabled
+              - cell " " [ref=e588]:
+                - generic [ref=e589]:
+                  - button "" [ref=e590] [cursor=pointer]:
+                    - generic [ref=e591]: 
+                  - button "" [ref=e592] [cursor=pointer]:
+                    - generic [ref=e593]: 
+            - row " karti ESS Vasanth .V Enabled  " [ref=e595]:
+              - cell "" [ref=e596]:
+                - generic [ref=e599] [cursor=pointer]:
+                  - checkbox "" [ref=e600]
+                  - generic [ref=e602]: 
+              - cell "karti" [ref=e603]:
+                - generic [ref=e604]: karti
+              - cell "ESS" [ref=e605]:
+                - generic [ref=e606]: ESS
+              - cell "Vasanth .V" [ref=e607]:
+                - generic [ref=e608]: Vasanth .V
+              - cell "Enabled" [ref=e609]:
+                - generic [ref=e610]: Enabled
+              - cell " " [ref=e611]:
+                - generic [ref=e612]:
+                  - button "" [ref=e613] [cursor=pointer]:
+                    - generic [ref=e614]: 
+                  - button "" [ref=e615] [cursor=pointer]:
+                    - generic [ref=e616]: 
+            - row " manisha123451781856931020 Admin TestEdited Scraper Enabled  " [ref=e618]:
+              - cell "" [ref=e619]:
+                - generic [ref=e622] [cursor=pointer]:
+                  - checkbox "" [ref=e623]
+                  - generic [ref=e625]: 
+              - cell "manisha123451781856931020" [ref=e626]:
+                - generic [ref=e627]: manisha123451781856931020
+              - cell "Admin" [ref=e628]:
+                - generic [ref=e629]: Admin
+              - cell "TestEdited Scraper" [ref=e630]:
+                - generic [ref=e631]: TestEdited Scraper
+              - cell "Enabled" [ref=e632]:
+                - generic [ref=e633]: Enabled
+              - cell " " [ref=e634]:
+                - generic [ref=e635]:
+                  - button "" [ref=e636] [cursor=pointer]:
+                    - generic [ref=e637]: 
+                  - button "" [ref=e638] [cursor=pointer]:
+                    - generic [ref=e639]: 
+            - row " manisha123451781856967978 Admin TestEdited Scraper Enabled  " [ref=e641]:
+              - cell "" [ref=e642]:
+                - generic [ref=e645] [cursor=pointer]:
+                  - checkbox "" [ref=e646]
+                  - generic [ref=e648]: 
+              - cell "manisha123451781856967978" [ref=e649]:
+                - generic [ref=e650]: manisha123451781856967978
+              - cell "Admin" [ref=e651]:
+                - generic [ref=e652]: Admin
+              - cell "TestEdited Scraper" [ref=e653]:
+                - generic [ref=e654]: TestEdited Scraper
+              - cell "Enabled" [ref=e655]:
+                - generic [ref=e656]: Enabled
+              - cell " " [ref=e657]:
+                - generic [ref=e658]:
+                  - button "" [ref=e659] [cursor=pointer]:
+                    - generic [ref=e660]: 
+                  - button "" [ref=e661] [cursor=pointer]:
+                    - generic [ref=e662]: 
+            - row " manisha123451781857863455 Admin TestEdited Scraper Enabled  " [ref=e664]:
+              - cell "" [ref=e665]:
+                - generic [ref=e668] [cursor=pointer]:
+                  - checkbox "" [ref=e669]
+                  - generic [ref=e671]: 
+              - cell "manisha123451781857863455" [ref=e672]:
+                - generic [ref=e673]: manisha123451781857863455
+              - cell "Admin" [ref=e674]:
+                - generic [ref=e675]: Admin
+              - cell "TestEdited Scraper" [ref=e676]:
+                - generic [ref=e677]: TestEdited Scraper
+              - cell "Enabled" [ref=e678]:
+                - generic [ref=e679]: Enabled
+              - cell " " [ref=e680]:
+                - generic [ref=e681]:
+                  - button "" [ref=e682] [cursor=pointer]:
+                    - generic [ref=e683]: 
+                  - button "" [ref=e684] [cursor=pointer]:
+                    - generic [ref=e685]: 
+            - row " manisha123451781859090559 Admin TestEdited Scraper Enabled  " [ref=e687]:
+              - cell "" [ref=e688]:
+                - generic [ref=e691] [cursor=pointer]:
+                  - checkbox "" [ref=e692]
+                  - generic [ref=e694]: 
+              - cell "manisha123451781859090559" [ref=e695]:
+                - generic [ref=e696]: manisha123451781859090559
+              - cell "Admin" [ref=e697]:
+                - generic [ref=e698]: Admin
+              - cell "TestEdited Scraper" [ref=e699]:
+                - generic [ref=e700]: TestEdited Scraper
+              - cell "Enabled" [ref=e701]:
+                - generic [ref=e702]: Enabled
+              - cell " " [ref=e703]:
+                - generic [ref=e704]:
+                  - button "" [ref=e705] [cursor=pointer]:
+                    - generic [ref=e706]: 
+                  - button "" [ref=e707] [cursor=pointer]:
+                    - generic [ref=e708]: 
+            - row " mike_manager Admin Mike Manager Enabled  " [ref=e710]:
+              - cell "" [ref=e711]:
+                - generic [ref=e714] [cursor=pointer]:
+                  - checkbox "" [ref=e715]
+                  - generic [ref=e717]: 
+              - cell "mike_manager" [ref=e718]:
+                - generic [ref=e719]: mike_manager
+              - cell "Admin" [ref=e720]:
+                - generic [ref=e721]: Admin
+              - cell "Mike Manager" [ref=e722]:
+                - generic [ref=e723]: Mike Manager
+              - cell "Enabled" [ref=e724]:
+                - generic [ref=e725]: Enabled
+              - cell " " [ref=e726]:
+                - generic [ref=e727]:
+                  - button "" [ref=e728] [cursor=pointer]:
+                    - generic [ref=e729]: 
+                  - button "" [ref=e730] [cursor=pointer]:
+                    - generic [ref=e731]: 
+            - row " pgarces ESS Patricia Marquina Enabled  " [ref=e733]:
+              - cell "" [ref=e734]:
+                - generic [ref=e737] [cursor=pointer]:
+                  - checkbox "" [ref=e738]
+                  - generic [ref=e740]: 
+              - cell "pgarces" [ref=e741]:
+                - generic [ref=e742]: pgarces
+              - cell "ESS" [ref=e743]:
+                - generic [ref=e744]: ESS
+              - cell "Patricia Marquina" [ref=e745]:
+                - generic [ref=e746]: Patricia Marquina
+              - cell "Enabled" [ref=e747]:
+                - generic [ref=e748]: Enabled
+              - cell " " [ref=e749]:
+                - generic [ref=e750]:
+                  - button "" [ref=e751] [cursor=pointer]:
+                    - generic [ref=e752]: 
+                  - button "" [ref=e753] [cursor=pointer]:
+                    - generic [ref=e754]: 
+            - row " pimuser59163791 ESS Raj ravi Enabled  " [ref=e756]:
+              - cell "" [ref=e757]:
+                - generic [ref=e760] [cursor=pointer]:
+                  - checkbox "" [ref=e761]
+                  - generic [ref=e763]: 
+              - cell "pimuser59163791" [ref=e764]:
+                - generic [ref=e765]: pimuser59163791
+              - cell "ESS" [ref=e766]:
+                - generic [ref=e767]: ESS
+              - cell "Raj ravi" [ref=e768]:
+                - generic [ref=e769]: Raj ravi
+              - cell "Enabled" [ref=e770]:
+                - generic [ref=e771]: Enabled
+              - cell " " [ref=e772]:
+                - generic [ref=e773]:
+                  - button "" [ref=e774] [cursor=pointer]:
+                    - generic [ref=e775]: 
+                  - button "" [ref=e776] [cursor=pointer]:
+                    - generic [ref=e777]: 
+            - row " pimuser59394191 ESS Raj ravi Enabled  " [ref=e779]:
+              - cell "" [ref=e780]:
+                - generic [ref=e783] [cursor=pointer]:
+                  - checkbox "" [ref=e784]
+                  - generic [ref=e786]: 
+              - cell "pimuser59394191" [ref=e787]:
+                - generic [ref=e788]: pimuser59394191
+              - cell "ESS" [ref=e789]:
+                - generic [ref=e790]: ESS
+              - cell "Raj ravi" [ref=e791]:
+                - generic [ref=e792]: Raj ravi
+              - cell "Enabled" [ref=e793]:
+                - generic [ref=e794]: Enabled
+              - cell " " [ref=e795]:
+                - generic [ref=e796]:
+                  - button "" [ref=e797] [cursor=pointer]:
+                    - generic [ref=e798]: 
+                  - button "" [ref=e799] [cursor=pointer]:
+                    - generic [ref=e800]: 
+            - row " Shyam123 ESS sww test Enabled  " [ref=e802]:
+              - cell "" [ref=e803]:
+                - generic [ref=e806] [cursor=pointer]:
+                  - checkbox "" [ref=e807]
+                  - generic [ref=e809]: 
+              - cell "Shyam123" [ref=e810]:
+                - generic [ref=e811]: Shyam123
+              - cell "ESS" [ref=e812]:
+                - generic [ref=e813]: ESS
+              - cell "sww test" [ref=e814]:
+                - generic [ref=e815]: sww test
+              - cell "Enabled" [ref=e816]:
+                - generic [ref=e817]: Enabled
+              - cell " " [ref=e818]:
+                - generic [ref=e819]:
+                  - button "" [ref=e820] [cursor=pointer]:
+                    - generic [ref=e821]: 
+                  - button "" [ref=e822] [cursor=pointer]:
+                    - generic [ref=e823]: 
+            - row " user_624768060 ESS John Smith_624768060 Enabled  " [ref=e825]:
+              - cell "" [ref=e826]:
+                - generic [ref=e829] [cursor=pointer]:
+                  - checkbox "" [ref=e830]
+                  - generic [ref=e832]: 
+              - cell "user_624768060" [ref=e833]:
+                - generic [ref=e834]: user_624768060
+              - cell "ESS" [ref=e835]:
+                - generic [ref=e836]: ESS
+              - cell "John Smith_624768060" [ref=e837]:
+                - generic [ref=e838]: John Smith_624768060
+              - cell "Enabled" [ref=e839]:
+                - generic [ref=e840]: Enabled
+              - cell " " [ref=e841]:
+                - generic [ref=e842]:
+                  - button "" [ref=e843] [cursor=pointer]:
+                    - generic [ref=e844]: 
+                  - button "" [ref=e845] [cursor=pointer]:
+                    - generic [ref=e846]: 
+            - row " user_841987656 ESS John Smith_841987656 Enabled  " [ref=e848]:
+              - cell "" [ref=e849]:
+                - generic [ref=e852] [cursor=pointer]:
+                  - checkbox "" [ref=e853]
+                  - generic [ref=e855]: 
+              - cell "user_841987656" [ref=e856]:
+                - generic [ref=e857]: user_841987656
+              - cell "ESS" [ref=e858]:
+                - generic [ref=e859]: ESS
+              - cell "John Smith_841987656" [ref=e860]:
+                - generic [ref=e861]: John Smith_841987656
+              - cell "Enabled" [ref=e862]:
+                - generic [ref=e863]: Enabled
+              - cell " " [ref=e864]:
+                - generic [ref=e865]:
+                  - button "" [ref=e866] [cursor=pointer]:
+                    - generic [ref=e867]: 
+                  - button "" [ref=e868] [cursor=pointer]:
+                    - generic [ref=e869]: 
+    - generic [ref=e871]:
+      - paragraph [ref=e872]: OrangeHRM OS 5.8
+      - paragraph [ref=e873]:
+        - text: © 2005 - 2026
+        - link "OrangeHRM, Inc" [ref=e874] [cursor=pointer]:
+          - /url: http://www.orangehrm.com
+        - text: . All rights reserved.
+```
+
+# Test source
+
+```ts
+  1   | // Import Playwright test helpers and any required libraries.
+  2   | import { test, expect } from '@playwright/test';
+  3   | 
+  4   | // Define the test case and assign a descriptive name.
+  5   | test('test', async ({ page }) => {
+  6   |   // Navigate to the application's login page
+  7   |   // Navigate the browser to the target test page URL.
+  8   |   await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+  9   | // Capture a screenshot of the current browser state.
+  10  | await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  11  |   // Focus the Username field
+  12  |   // Click the element to trigger the next user action.
+  13  |   await page.getByRole('textbox', { name: 'Username' }).click();
+  14  |   // Capture a screenshot of the current browser state.
+  15  |   await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  16  |   // Enter the username
+  17  |   // Fill the target input field with the specified value.
+  18  |   await page.getByRole('textbox', { name: 'Username' }).fill('Admin');
+  19  | // Capture a screenshot of the current browser state.
+  20  | await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  21  |   // Focus the Password field
+  22  |   // Click the element to trigger the next user action.
+  23  |   await page.getByRole('textbox', { name: 'Password' }).click();
+  24  |   // Capture a screenshot of the current browser state.
+  25  |   await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  26  |   // Enter the password
+  27  |   // Fill the target input field with the specified value.
+  28  |   await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
+  29  |   // Capture a screenshot of the current browser state.
+  30  |   await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  31  | 
+  32  |   // Submit the login form
+  33  |   // Click the element to trigger the next user action.
+  34  |   await page.getByRole('button', { name: 'Login' }).click();
+  35  | // Capture a screenshot of the current browser state.
+  36  | await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  37  |   // Open the global Search box and type 'Admin'
+  38  |   // Click the element to trigger the next user action.
+  39  |   await page.getByRole('textbox', { name: 'Search' }).click();
+  40  |   // Capture a screenshot of the current browser state.
+  41  |   await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  42  |   // Fill the target input field with the specified value.
+  43  |   await page.getByRole('textbox', { name: 'Search' }).fill('Admin');
+  44  | 
+  45  |   // Navigate to the 'Admin' section from search results
+  46  |   // Click the element to trigger the next user action.
+  47  |   await page.getByRole('link', { name: 'Admin' }).click();
+  48  | // Capture a screenshot of the current browser state.
+  49  | await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  50  |   // Interact with the second textbox on the page (likely a filter input)
+  51  |   // Click the element to trigger the next user action.
+  52  |   await page.getByRole('textbox').nth(1).click();
+  53  |   // Apply text filter value
+  54  |   // Fill the target input field with the specified value.
+  55  |   await page.getByRole('textbox').nth(1).fill('Admin');
+  56  | // Capture a screenshot of the current browser state.
+  57  | await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  58  | 
+  59  |   // Open the first dropdown and select the 'Admin' role
+  60  |   // Click the element to trigger the next user action.
+  61  |   await page.getByText('-- Select --').first().click();
+  62  |   // Capture a screenshot of the current browser state.
+  63  |   await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  64  |   // Click the element to trigger the next user action.
+> 65  |   await page.getByRole('option', { name: 'Admin' }).click();
+      |                                                     ^ Error: locator.click: Test timeout of 60000ms exceeded.
+  66  | // Capture a screenshot of the current browser state.
+  67  | await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  68  |   // Use the autocomplete/hint field to search for a specific user
+  69  |   // Click the element to trigger the next user action.
+  70  |   await page.getByRole('textbox', { name: 'Type for hints...' }).click();
+  71  |   // Capture a screenshot of the current browser state.
+  72  |   await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  73  |   // Fill the target input field with the specified value.
+  74  |   await page.getByRole('textbox', { name: 'Type for hints...' }).fill('Eric ');
+  75  |   // Capture a screenshot of the current browser state.
+  76  |   await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  77  |   // Choose the suggested user from the autocomplete list
+  78  |   // Click the element to trigger the next user action.
+  79  |   await page.getByRole('option', { name: 'Eric akhil Cantona' }).click();
+  80  |   // Capture a screenshot of the current browser state.
+  81  |   await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  82  | 
+  83  |   // Change status filter to 'Enabled'
+  84  |   // Click the element to trigger the next user action.
+  85  |   await page.getByText('-- Select --').click();
+  86  |   // Capture a screenshot of the current browser state.
+  87  |   await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  88  |   // Click the element to trigger the next user action.
+  89  |   await page.getByRole('listbox').getByText('Enabled').click();
+  90  | // Capture a screenshot of the current browser state.
+  91  | await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  92  |   // Apply search with the selected filters
+  93  |   // Click the element to trigger the next user action.
+  94  |   await page.getByRole('button', { name: 'Search' }).click();
+  95  | // Capture a screenshot of the current browser state.
+  96  | await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  97  |   // Select the result that matches 'Eric Cantona'
+  98  |   // Click the element to trigger the next user action.
+  99  |   await page.locator('span').filter({ hasText: 'Eric Cantona' }).click();
+  100 | // Capture a screenshot of the current browser state.
+  101 | await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  102 |   // Open the user menu and log out
+  103 |   // Click the element to trigger the next user action.
+  104 |   await page.getByRole('menuitem', { name: 'Logout' }).click();
+  105 |   // Capture a screenshot of the current browser state.
+  106 |   await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  107 | });
+  108 | 
+```
