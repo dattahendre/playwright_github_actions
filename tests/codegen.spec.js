@@ -104,4 +104,6 @@ await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
   await page.getByRole('menuitem', { name: 'Logout' }).click();
   // Capture a screenshot of the current browser state.
   await page.screenshot({ path: 'screenshot/my-snapshot.png', fullPage: true });
+  // Close the browser page after completing the test actions
+  await page.close();
 });
