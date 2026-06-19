@@ -31,4 +31,4 @@ jobs:
 
     # Customize this step as needed
     - name: Build application
-      run: echo "No build step required for this repository"
+      run: npx run build

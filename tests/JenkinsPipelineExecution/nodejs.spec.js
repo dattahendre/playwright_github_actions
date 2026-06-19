@@ -33,4 +33,6 @@ test('test', async ({ page }) => {
   await page.getByRole('link', { name: 'Data Types' }).click();
   // Assert that the expected element is visible on the page.
   await expect(page.getByRole('heading', { name: 'JavaScript data types and' })).toBeVisible();
+  //close the browser after test case execution
+  await page.close();
 });

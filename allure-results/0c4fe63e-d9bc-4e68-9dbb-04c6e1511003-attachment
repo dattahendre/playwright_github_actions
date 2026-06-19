@@ -1,0 +1,257 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: dropdown.spec.js >> test
+- Location: tests\dropdown.spec.js:5:5
+
+# Error details
+
+```
+TimeoutError: locator.check: Timeout 5000ms exceeded.
+Call log:
+  - waiting for getByText('SQL').locator('..').locator('input[type="checkbox"]')
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6] [cursor=pointer]:
+        - img "logo" [ref=e7]
+        - heading "Learn Automation Courses" [level=1] [ref=e8]
+      - generic [ref=e9]:
+        - img "menu" [ref=e10] [cursor=pointer]
+        - generic [ref=e11]:
+          - generic [ref=e12]:
+            - text: Learn Automation Courses
+            - img "delete" [ref=e13] [cursor=pointer]
+          - generic [ref=e14]:
+            - link "Home" [ref=e15] [cursor=pointer]:
+              - /url: /
+              - generic [ref=e16]: Home
+            - link "Practise" [ref=e17] [cursor=pointer]:
+              - /url: /practise
+              - generic [ref=e18]: Practise
+            - button "Log in" [ref=e19] [cursor=pointer]
+  - generic [ref=e21]:
+    - generic [ref=e24]:
+      - heading "Sign Up" [level=2] [ref=e25]
+      - textbox "Name" [ref=e26]: Miss Christ Wunsch
+      - textbox "Email" [ref=e27]: Albert_Quigley83@hotmail.com
+      - textbox "Password must be atleast 6 characters" [active] [ref=e28]:
+        - /placeholder: Password
+        - text: Angq6mJP8ws1
+      - heading "Interests" [level=4] [ref=e29]
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - checkbox "PHP" [ref=e33]
+          - generic [ref=e34]: PHP
+        - generic [ref=e35]:
+          - checkbox "Selenium" [ref=e37]
+          - generic [ref=e38]: Selenium
+        - generic [ref=e39]:
+          - checkbox "JMeter" [ref=e41]
+          - generic [ref=e42]: JMeter
+        - generic [ref=e43]:
+          - checkbox "JavaScript" [ref=e45]
+          - generic [ref=e46]: JavaScript
+        - generic [ref=e47]:
+          - checkbox "Python" [ref=e49]
+          - generic [ref=e50]: Python
+        - generic [ref=e51]:
+          - checkbox "Sanjeev" [ref=e53]
+          - generic [ref=e54]: Sanjeev
+        - generic [ref=e55]:
+          - checkbox "Tanishka Tayal" [ref=e57]
+          - generic [ref=e58]: Tanishka Tayal
+      - heading "Gender" [level=4] [ref=e59]
+      - generic [ref=e60]:
+        - generic [ref=e61]:
+          - radio [checked] [ref=e62]
+          - generic [ref=e63]: Male
+        - generic [ref=e64]:
+          - radio [ref=e65]
+          - generic [ref=e66]: Female
+      - generic [ref=e67]:
+        - heading "State:" [level=4] [ref=e68]
+        - combobox [ref=e69]:
+          - option "Andhra Pradesh"
+          - option "Arunachal Pradesh"
+          - option "Assam"
+          - option "Bihar"
+          - option "Chhattisgarh"
+          - option "Goa"
+          - option "Gujarat"
+          - option "Haryana"
+          - option "Himachal Pradesh"
+          - option "Jammu and Kashmir"
+          - option "Jharkhand"
+          - option "Karnataka"
+          - option "Kerala"
+          - option "Madhya Pradesh"
+          - option "Maharashtra"
+          - option "Manipur"
+          - option "Meghalaya"
+          - option "Mizoram"
+          - option "Nagaland"
+          - option "Odisha"
+          - option "Punjab"
+          - option "Rajasthan"
+          - option "Sikkim"
+          - option "Tamil Nadu"
+          - option "Telangana"
+          - option "Tripura"
+          - option "Uttarakhand"
+          - option "Uttar Pradesh"
+          - option "West Bengal"
+          - option "Andaman and Nicobar Islands"
+          - option "Chandigarh"
+          - option "Dadra and Nagar Haveli"
+          - option "Daman and Diu"
+          - option "Delhi"
+          - option "Lakshadweep"
+          - option "Puducherry"
+      - generic [ref=e70]:
+        - heading "Hobbies:" [level=4] [ref=e71]
+        - listbox [ref=e72]:
+          - option "Playing" [ref=e73]
+          - option "Reading" [ref=e74]
+          - option "Swimming" [ref=e75]
+          - option "Singing" [ref=e76]
+          - option "Dancing" [ref=e77]
+      - button "Sign up" [disabled] [ref=e78]
+      - link "Already a user? Login" [ref=e79] [cursor=pointer]:
+        - /url: /login
+    - img "Login" [ref=e81]
+  - generic [ref=e83]:
+    - generic [ref=e84]:
+      - heading "Learn Automation By Mukesh Otwani" [level=3] [ref=e85]
+      - heading "©2023 All rights reserved" [level=2] [ref=e86]
+    - generic [ref=e87] [cursor=pointer]:
+      - link [ref=e88]:
+        - /url: https://youtube.com/MukeshOtwani
+        - img [ref=e89]
+      - link [ref=e92]:
+        - /url: https://twitter.com/MukeshOtwani
+        - img [ref=e93]
+      - link [ref=e95]:
+        - /url: https://www.linkedin.com/in/mukesh-otwani-93631b99/
+        - img [ref=e96]
+      - link [ref=e98]:
+        - /url: https://www.facebook.com/groups/256655817858291
+        - img [ref=e99]
+```
+
+# Test source
+
+```ts
+  1   | // Import Playwright test helpers and any required libraries.
+  2   | import { test, expect } from '@playwright/test';
+  3   | 
+  4   | // Define the test case and assign a descriptive name.
+  5   | test('test', async ({ page }) => {
+  6   |   // Navigate the browser to the target test page URL.
+  7   |   await page.goto('https://freelance-learn-automation.vercel.app/signup');
+  8   |   await page.setDefaultTimeout(5000);
+  9   |   // Assert the element or page contains the expected text.
+  10  |   await expect(page.locator('form')).toContainText('Sign Up');
+  11  |   //generate random data using faker library and fill the form
+  12  |   // Import Playwright test helpers and any required libraries.
+  13  |   const { faker } = require('@faker-js/faker');
+  14  |   // Store a value, element handle, or generated data for later use.
+  15  |   const randomName = faker.person.fullName();
+  16  |   // Store a value, element handle, or generated data for later use.
+  17  |   const randomEmail = faker.internet.email();
+  18  |   // Store a value, element handle, or generated data for later use.
+  19  |   const randomPassword = faker.internet.password({ length: 12 });
+  20  |   // Fill the target input field with the specified value.
+  21  |   await page.getByRole('textbox', { name: 'Name' }).fill(randomName);
+  22  |   // Fill the target input field with the specified value.
+  23  |   await page.getByRole('textbox', { name: 'Email' }).fill(randomEmail);
+  24  |   // Fill the target input field with the specified value.
+  25  |   await page.getByRole('textbox', { name: 'Password must be atleast 6' }).fill(randomPassword);
+  26  | //select checkbox by using getByText method
+  27  |   // Toggle the checkbox or option input.
+> 28  |   await page.getByText('SQL').locator('..').locator('input[type="checkbox"]').check();
+      |                                                                               ^ TimeoutError: locator.check: Timeout 5000ms exceeded.
+  29  |     //select selenium checkbox using relative xpath
+  30  |   // Toggle the checkbox or option input.
+  31  |   await page.locator('//input[@id=\'69fcaff7416ceeaa32bf5766\']').check();
+  32  |   //selecting checkbox using label text
+  33  |   // Toggle the checkbox or option input.
+  34  |   await page.getByLabel('PHP').check();
+  35  |   // Assert that the expected element is visible on the page.
+  36  |   await expect(page.getByRole('heading', { name: 'State:' })).toBeVisible();
+  37  |   // getting all the option texts of the dropdown and printing them
+  38  |   // Store a value, element handle, or generated data for later use.
+  39  |   const statedropdown = await page.locator('#state option').allTextContents();
+  40  |   //get the count of dropdown options
+  41  |   // Store a value, element handle, or generated data for later use.
+  42  |   const dropdowncount = await page.locator('#state option').count();
+  43  |   // Log information to the console for debugging or verification.
+  44  |   console.log("Total options in state dropdown:", dropdowncount);
+  45  |   //validate the dropdown options whether it contains the expected values
+  46  |   // Assert a page condition with Playwright matchers.
+  47  |   await expect(statedropdown.includes('Maharashtra')).toBeTruthy();
+  48  |   // print values one by one
+  49  |   for (let i = 0; i < statedropdown.length; i++) {
+  50  |     // Log information to the console for debugging or verification.
+  51  |     console.log(statedropdown[i]);
+  52  |   }
+  53  |   //select dropdown value by label
+  54  |   //await page.locator('#state').selectOption({ label: 'Maharashtra' });
+  55  |   //selct dropdown value by value
+  56  |   //await page.locator('#state').selectOption({ value: 'MP' });
+  57  |   //select dropdown value by index
+  58  |   // Select a value from the dropdown menu.
+  59  |   await page.locator('#state').selectOption({ index: 3 });  
+  60  | 
+  61  |   // Assert that the expected element is visible on the page.
+  62  |   await expect(page.getByRole('heading', { name: 'Hobbies:' })).toBeVisible();
+  63  |   //getting all the options of the dropdown and printing in console
+  64  |   // 1) Get all option texts (not the select text)
+  65  | // Store a value, element handle, or generated data for later use.
+  66  | const hobbiesdropdown = await page.locator('#hobbies option').allTextContents();
+  67  | //verify the dropdown options contains expected values
+  68  | // Assert a page condition with Playwright matchers.
+  69  | await expect(hobbiesdropdown.includes('Reading')).toBeTruthy();
+  70  | // print values one by one
+  71  | for (let i = 0; i < hobbiesdropdown.length; i++) {
+  72  |   // Log information to the console for debugging or verification.
+  73  |   console.log(hobbiesdropdown[i]);
+  74  | }
+  75  | 
+  76  | // 2) Assert the array
+  77  | // Assert a page condition with Playwright matchers.
+  78  | await expect(hobbiesdropdown).toEqual(['Select Multiple Hobbies','Playing','Reading','Swimming','Singing','Dancing']);
+  79  | 
+  80  | // 3) Select one value
+  81  | // Select a value from the dropdown menu.
+  82  | await page.locator('#hobbies').selectOption({ label: 'Reading' });
+  83  | // click on sign up button
+  84  | // Click the element to trigger the next user action.
+  85  | await page.getByRole('button', { name: 'Sign Up' }).click();
+  86  | // 1. Locate the message directly using case-insensitive text matching
+  87  | // Store a value, element handle, or generated data for later use.
+  88  | const successMessage = page.getByText(/Signup successfully, Please login!/i);
+  89  | 
+  90  | // 2. Assert visibility (Playwright will auto-wait up to 5000ms for it to appear)
+  91  | // Assert that the expected element is visible on the page.
+  92  | await expect(successMessage).toBeVisible();
+  93  | //wait for msg to disappear
+  94  | // Wait briefly to allow UI updates or manual observation.
+  95  | await page.waitForTimeout(2000);
+  96  | // Close the current page or browser at the end of the test.
+  97  | await page.close();
+  98  | });
+  99  | 
+  100 | 
+```
