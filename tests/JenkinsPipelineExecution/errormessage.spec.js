@@ -53,5 +53,4 @@ test('Verify error message for invalid login', async ({ page }) => {
   // Assert a page condition with Playwright matchers.
   await expect(errorMessage==='Invalid credentials').toBeTruthy();
   await screenshotPage.takeRandomScreenshot(true);
-  await page.close();
 });
