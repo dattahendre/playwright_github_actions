@@ -1,0 +1,5 @@
+[INFO] 2026-06-20T18:29:10.241Z - Setting up keyboard action test
+[INFO] 2026-06-20T18:29:10.381Z - Test: TC_KEYBOARD_002 - Select all text test
+[INFO] 2026-06-20T18:29:14.296Z - Text selected successfully
+[INFO] 2026-06-20T18:29:14.304Z - Test passed
+[INFO] 2026-06-20T18:29:14.443Z - Keyboard action test completed

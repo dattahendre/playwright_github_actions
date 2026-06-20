@@ -1,0 +1,4 @@
+[INFO] 2026-06-20T18:39:56.028Z - API Test Suite started
+[INFO] 2026-06-20T18:39:56.043Z - Test: TC_API_001 - Basic GET request
+[INFO] 2026-06-20T18:39:56.044Z - Making GET request to https://jsonplaceholder.typicode.com/posts/1
+[INFO] 2026-06-20T18:39:56.386Z - API test completed

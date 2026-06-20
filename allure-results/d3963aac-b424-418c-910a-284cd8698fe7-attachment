@@ -1,0 +1,136 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: smoke\smokeTests.spec.js >> Smoke Tests >> SMOKE_001 - Application loads successfully
+- Location: tests\smoke\smokeTests.spec.js:13:3
+
+# Error details
+
+```
+Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/
+Call log:
+  - navigating to "http://localhost:3000/", waiting until "load"
+
+```
+
+# Test source
+
+```ts
+  1   | /**
+  2   |  * smokeTests.spec.js - Smoke Tests
+  3   |  * Quick sanity tests to verify basic functionality
+  4   |  */
+  5   | 
+  6   | const test = require('../../src/fixtures/fixtures');
+  7   | const testData = require('../../src/data/testData');
+  8   | const { getBaseURL } = require('../../src/config/config');
+  9   | const { expect } = require('@playwright/test');
+  10  | 
+  11  | test.describe('Smoke Tests', () => {
+  12  | 
+  13  |   test('SMOKE_001 - Application loads successfully', async ({ page }) => {
+  14  |     // Act
+  15  |     const baseURL = getBaseURL();
+> 16  |     await page.goto(baseURL);
+      |                ^ Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:3000/
+  17  |     
+  18  |     // Assert
+  19  |     expect(page.url()).toContain(baseURL);
+  20  |     const pageTitle = await page.title();
+  21  |     expect(pageTitle).toBeTruthy();
+  22  |   });
+  23  | 
+  24  |   test('SMOKE_002 - Login page is accessible', async ({ loginPage }) => {
+  25  |     // Arrange
+  26  |     const baseURL = getBaseURL();
+  27  |     
+  28  |     // Act
+  29  |     await loginPage.navigateToLoginPage(baseURL);
+  30  |     
+  31  |     // Assert
+  32  |     expect(loginPage.page.url()).toContain('/login');
+  33  |     const isFormVisible = await loginPage.isElementVisible(loginPage.usernameInput);
+  34  |     expect(isFormVisible).toBe(true);
+  35  |   });
+  36  | 
+  37  |   test('SMOKE_003 - User can login and logout', async ({ 
+  38  |     loginPage, 
+  39  |     homePage, 
+  40  |     page 
+  41  |   }) => {
+  42  |     // Arrange
+  43  |     const baseURL = getBaseURL();
+  44  |     const user = testData.users.validUser;
+  45  |     
+  46  |     // Act - Login
+  47  |     await loginPage.navigateToLoginPage(baseURL);
+  48  |     await loginPage.login(user.email, user.password);
+  49  |     
+  50  |     // Assert - Logged in
+  51  |     const isLoggedIn = await homePage.isUserLoggedIn();
+  52  |     expect(isLoggedIn).toBe(true);
+  53  |     
+  54  |     // Act - Logout
+  55  |     await homePage.logout();
+  56  |     
+  57  |     // Assert - Logged out
+  58  |     expect(page.url()).toContain('/login');
+  59  |   });
+  60  | 
+  61  |   test('SMOKE_004 - Navigation menu items are clickable', async ({ 
+  62  |     authenticatedPage, 
+  63  |     page 
+  64  |   }) => {
+  65  |     const baseURL = getBaseURL();
+  66  |     
+  67  |     // Navigate to home
+  68  |     await page.goto(baseURL + '/home');
+  69  |     
+  70  |     // Act
+  71  |     const menuItems = ['Products', 'Orders', 'Wishlist'];
+  72  |     
+  73  |     for (const item of menuItems) {
+  74  |       // Assert
+  75  |       const menuButton = page.locator(`button:has-text("${item}")`);
+  76  |       expect(await menuButton.isVisible()).toBe(true);
+  77  |     }
+  78  |   });
+  79  | 
+  80  |   test('SMOKE_005 - API endpoint is accessible', async ({ apiContext }) => {
+  81  |     // Act
+  82  |     const response = await apiContext.get('/health');
+  83  |     
+  84  |     // Assert
+  85  |     expect(response.status()).toBe(200);
+  86  |   });
+  87  | 
+  88  |   test('SMOKE_006 - Database connectivity', async ({ apiContext }) => {
+  89  |     // Act
+  90  |     const response = await apiContext.get('/status');
+  91  |     const responseBody = await response.json();
+  92  |     
+  93  |     // Assert
+  94  |     expect(response.status()).toBe(200);
+  95  |     expect(responseBody.database).toBe('connected');
+  96  |   });
+  97  | 
+  98  |   test('SMOKE_007 - Homepage loads without errors', async ({ page }) => {
+  99  |     const baseURL = getBaseURL();
+  100 |     
+  101 |     // Act
+  102 |     await page.goto(baseURL);
+  103 |     
+  104 |     // Assert
+  105 |     const errors = await page.evaluate(() => {
+  106 |       return window.errors || [];
+  107 |     });
+  108 |     expect(errors.length).toBe(0);
+  109 |   });
+  110 | });
+  111 | 
+```

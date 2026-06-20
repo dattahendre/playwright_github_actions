@@ -1,0 +1,4 @@
+[INFO] 2026-06-20T18:25:29.004Z - API Test Suite started
+[INFO] 2026-06-20T18:25:29.039Z - Test: TC_API_004 - Validate array response
+[INFO] 2026-06-20T18:25:29.039Z - Fetching posts for userId=1
+[INFO] 2026-06-20T18:25:29.400Z - API test completed

@@ -1,0 +1,8 @@
+[INFO] 2026-06-20T18:38:50.072Z - Preparing OrangeHRM login test
+[INFO] 2026-06-20T18:38:54.456Z - Test: TC_OHRM_001 - Enter username and password and click login button
+[INFO] 2026-06-20T18:38:54.456Z - Navigating to OrangeHRM login page: https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+[INFO] 2026-06-20T18:38:58.763Z - Filling credentials - Username: Admin
+[INFO] 2026-06-20T18:39:00.601Z - Taking screenshot after entering credentials
+[INFO] 2026-06-20T18:39:00.734Z - Clicking login button
+[INFO] 2026-06-20T18:39:02.992Z - Verifying dashboard is visible
+[INFO] 2026-06-20T18:39:07.799Z - OrangeHRM login test completed

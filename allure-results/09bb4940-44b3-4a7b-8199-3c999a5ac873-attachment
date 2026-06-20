@@ -1,0 +1,226 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: api-test.spec.js >> API PUT Request Tests - Update Operations >> should handle update of non-existent post - Dataset 6
+- Location: tests\api-test.spec.js:412:3
+
+# Error details
+
+```
+Error: expect(received).toContain(expected) // indexOf
+
+Expected value: 500
+Received array: [200, 404]
+```
+
+# Test source
+
+```ts
+  323 | test.describe('API PUT Request Tests - Update Operations', () => {
+  324 | 
+  325 |   // Test Dataset 1: Update all fields
+  326 |   test('should update post with all fields - Dataset 1', async ({ request }) => {
+  327 |     const updateData = {
+  328 |       id: 1,
+  329 |       title: 'Updated Post Title',
+  330 |       body: 'This is the updated content',
+  331 |       userId: 1
+  332 |     };
+  333 |     
+  334 |     const response = await request.put('https://jsonplaceholder.typicode.com/posts/1', {
+  335 |       data: updateData
+  336 |     });
+  337 |     
+  338 |     expect(response.status()).toBe(200);
+  339 |     const responseBody = await response.json();
+  340 |     expect(responseBody.title).toBe(updateData.title);
+  341 |     expect(responseBody.body).toBe(updateData.body);
+  342 |   });
+  343 | 
+  344 |   // Test Dataset 2: Update with different user ID
+  345 |   test('should update post to different user - Dataset 2', async ({ request }) => {
+  346 |     const updateData = {
+  347 |       id: 2,
+  348 |       title: 'Reassigned Post',
+  349 |       body: 'Post reassigned to another user',
+  350 |       userId: 5
+  351 |     };
+  352 |     
+  353 |     const response = await request.put('https://jsonplaceholder.typicode.com/posts/2', {
+  354 |       data: updateData
+  355 |     });
+  356 |     
+  357 |     expect(response.status()).toBe(200);
+  358 |     const responseBody = await response.json();
+  359 |     expect(responseBody.userId).toBe(5);
+  360 |   });
+  361 | 
+  362 |   // Test Dataset 3: Partial update (only title)
+  363 |   test('should update only title field - Dataset 3', async ({ request }) => {
+  364 |     const updateData = {
+  365 |       title: 'Only Title Updated',
+  366 |       body: 'original body',
+  367 |       userId: 1
+  368 |     };
+  369 |     
+  370 |     const response = await request.put('https://jsonplaceholder.typicode.com/posts/3', {
+  371 |       data: updateData
+  372 |     });
+  373 |     
+  374 |     expect(response.status()).toBe(200);
+  375 |   });
+  376 | 
+  377 |   // Test Dataset 4: Update multiple posts in sequence
+  378 |   test('should update multiple posts sequentially - Dataset 4', async ({ request }) => {
+  379 |     const postIds = [4, 5, 6];
+  380 |     
+  381 |     for (const id of postIds) {
+  382 |       const updateData = {
+  383 |         title: `Updated Post ${id}`,
+  384 |         body: `Updated body for post ${id}`,
+  385 |         userId: 1
+  386 |       };
+  387 |       
+  388 |       const response = await request.put(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+  389 |         data: updateData
+  390 |       });
+  391 |       
+  392 |       expect(response.status()).toBe(200);
+  393 |     }
+  394 |   });
+  395 | 
+  396 |   // Test Dataset 5: Update with special characters
+  397 |   test('should update post with special characters - Dataset 5', async ({ request }) => {
+  398 |     const updateData = {
+  399 |       title: 'Updated: Special Chars @#$%',
+  400 |       body: '<HTML>& entities & symbols',
+  401 |       userId: 1
+  402 |     };
+  403 |     
+  404 |     const response = await request.put('https://jsonplaceholder.typicode.com/posts/5', {
+  405 |       data: updateData
+  406 |     });
+  407 |     
+  408 |     expect(response.status()).toBe(200);
+  409 |   });
+  410 | 
+  411 |   // Test Dataset 6: Update non-existent post (negative case)
+  412 |   test('should handle update of non-existent post - Dataset 6', async ({ request }) => {
+  413 |     const updateData = {
+  414 |       title: 'Non-existent Post Update',
+  415 |       body: 'This update may return 404',
+  416 |       userId: 1
+  417 |     };
+  418 |     
+  419 |     const response = await request.put('https://jsonplaceholder.typicode.com/posts/999999', {
+  420 |       data: updateData
+  421 |     });
+  422 |     
+> 423 |     expect([200, 404]).toContain(response.status());
+      |                        ^ Error: expect(received).toContain(expected) // indexOf
+  424 |   });
+  425 | 
+  426 |   // Test Dataset 7: Update with empty body
+  427 |   test('should update with empty body - Dataset 7', async ({ request }) => {
+  428 |     const updateData = {
+  429 |       title: 'Post with empty body',
+  430 |       body: '',
+  431 |       userId: 1
+  432 |     };
+  433 |     
+  434 |     const response = await request.put('https://jsonplaceholder.typicode.com/posts/7', {
+  435 |       data: updateData
+  436 |     });
+  437 |     
+  438 |     expect(response.status()).toBe(200);
+  439 |   });
+  440 | });
+  441 | 
+  442 | test.describe('API DELETE Request Tests - Delete Operations', () => {
+  443 | 
+  444 |   // Test Dataset 1: Delete existing post
+  445 |   test('should delete existing post - Dataset 1', async ({ request }) => {
+  446 |     const response = await request.delete('https://jsonplaceholder.typicode.com/posts/1');
+  447 |     
+  448 |     expect(response.status()).toBe(200);
+  449 |     const responseBody = await response.json();
+  450 |     expect(responseBody).toEqual({});
+  451 |   });
+  452 | 
+  453 |   // Test Dataset 2: Delete multiple posts
+  454 |   test('should delete multiple posts - Dataset 2', async ({ request }) => {
+  455 |     const postIds = [10, 11, 12];
+  456 |     
+  457 |     for (const id of postIds) {
+  458 |       const response = await request.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  459 |       expect(response.status()).toBe(200);
+  460 |     }
+  461 |   });
+  462 | 
+  463 |   // Test Dataset 3: Delete non-existent post
+  464 |   test('should handle deletion of non-existent post - Dataset 3', async ({ request }) => {
+  465 |     const response = await request.delete('https://jsonplaceholder.typicode.com/posts/99999');
+  466 |     
+  467 |     expect([200, 404]).toContain(response.status());
+  468 |   });
+  469 | 
+  470 |   // Test Dataset 4: Verify deleted post cannot be retrieved
+  471 |   test('should not retrieve deleted post - Dataset 4', async ({ request }) => {
+  472 |     // Delete first
+  473 |     const deleteResponse = await request.delete('https://jsonplaceholder.typicode.com/posts/15');
+  474 |     expect(deleteResponse.status()).toBe(200);
+  475 |     
+  476 |     // Try to get deleted post
+  477 |     const getResponse = await request.get('https://jsonplaceholder.typicode.com/posts/15');
+  478 |     // May return 404 or empty object depending on API
+  479 |     expect([200, 404]).toContain(getResponse.status());
+  480 |   });
+  481 | 
+  482 |   // Test Dataset 5: Delete with custom headers
+  483 |   test('should delete with custom headers - Dataset 5', async ({ request }) => {
+  484 |     const response = await request.delete('https://jsonplaceholder.typicode.com/posts/20', {
+  485 |       headers: {
+  486 |         'Accept': 'application/json',
+  487 |         'Authorization': 'Bearer token'
+  488 |       }
+  489 |     });
+  490 |     
+  491 |     expect([200, 404]).toContain(response.status());
+  492 |   });
+  493 | });
+  494 | 
+  495 | test.describe('API PATCH Request Tests - Partial Updates', () => {
+  496 | 
+  497 |   // Test Dataset 1: Patch with title only
+  498 |   test('should patch post with title only - Dataset 1', async ({ request }) => {
+  499 |     const patchData = {
+  500 |       title: 'Patched Title Only'
+  501 |     };
+  502 |     
+  503 |     const response = await request.patch('https://jsonplaceholder.typicode.com/posts/1', {
+  504 |       data: patchData
+  505 |     });
+  506 |     
+  507 |     expect([200, 204]).toContain(response.status());
+  508 |   });
+  509 | 
+  510 |   // Test Dataset 2: Patch with body only
+  511 |   test('should patch post with body only - Dataset 2', async ({ request }) => {
+  512 |     const patchData = {
+  513 |       body: 'Patched body content'
+  514 |     };
+  515 |     
+  516 |     const response = await request.patch('https://jsonplaceholder.typicode.com/posts/2', {
+  517 |       data: patchData
+  518 |     });
+  519 |     
+  520 |     expect([200, 204]).toContain(response.status());
+  521 |   });
+  522 | 
+  523 |   // Test Dataset 3: Patch multiple fields
+```

@@ -1,0 +1,26 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: JenkinsPipelineExecution\border.spec.js >> Border test case
+- Location: tests\JenkinsPipelineExecution\border.spec.js:5:1
+
+# Error details
+
+```
+Error: locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for getByRole('link', { name: 'Forms' })
+    - locator resolved to <a href="#" title="Forms" aria-expanded="false" class="ng-tns-c99-2 ng-star-inserted">…</a>
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+
+```
+
+```
+Error: browserContext.close: Target page, context or browser has been closed
+```

@@ -1,0 +1,8 @@
+[INFO] 2026-06-20T18:29:04.811Z - Setting up keyboard action test
+[INFO] 2026-06-20T18:29:05.110Z - Test: TC_KEYBOARD_001 - Keyboard action test case
+[INFO] 2026-06-20T18:29:05.110Z - Navigating to Google
+[INFO] 2026-06-20T18:29:05.970Z - Searching for: Mukesh otwani
+[INFO] 2026-06-20T18:29:06.604Z - Performing keyboard actions: Select All -> Copy -> Delete
+[INFO] 2026-06-20T18:29:08.762Z - Verifying search box is cleared
+[INFO] 2026-06-20T18:29:08.945Z - Test passed successfully
+[INFO] 2026-06-20T18:29:09.112Z - Keyboard action test completed

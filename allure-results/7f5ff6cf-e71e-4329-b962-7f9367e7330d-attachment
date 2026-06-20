@@ -1,0 +1,68 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Test.spec.js >> Google page sample test case
+- Location: tests\Test.spec.js:5:5
+
+# Error details
+
+```
+Error: locator.click: Test ended.
+Call log:
+  - waiting for locator('//*[name()="svg" and @class="EQxvpc m4l7Cf"]').first()
+    - locator resolved to <svg aria-hidden="true" fill="currentColor" class="EQxvpc m4l7Cf" viewBox="0 -960 960 960" xmlns="http://www.w3.org/2000/svg">…</svg>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+
+```
+
+# Test source
+
+```ts
+  1  | // Import Playwright test helpers and any required libraries.
+  2  | const{test,expect} = require('@playwright/test')
+  3  | 
+  4  |     // Define the test case and assign a descriptive name.
+  5  |     test("Google page sample test case",async function ({page}){
+  6  |         // Navigate the browser to the target test page URL.
+  7  |         await page.goto("https://www.google.com/")
+  8  |         //assigen wait for page load
+  9  |         waitUntill:'load';
+  10 |         //wait for 5 seconds
+  11 |         timeout:'5000';
+  12 |         // Verify the page title matches the expected value or pattern.
+  13 |         await expect(page).toHaveTitle("Google");
+  14 |         //click on AI mode
+  15 |         // Click the element to trigger the next user action.
+  16 |         await page.getByText('AI Mode', { exact: true }).click()
+  17 |         //click on search box
+  18 |         // Click the element to trigger the next user action.
+  19 |         await page.getByRole('combobox', { name: 'Search' }).click();
+  20 |         // Verify the page title matches the expected value or pattern.
+  21 |         await expect(page).toHaveTitle("Google");
+  22 |         //pause the browser
+  23 |  
+  24 | 
+  25 | // Basic: by class (works in most modern browsers / drivers)
+  26 | // Store a value, element handle, or generated data for later use.
+  27 | const plusIconFirst = page.locator('//*[name()="svg" and @class="EQxvpc m4l7Cf"]').first();
+  28 | // Click the element to trigger the next user action.
+> 29 | plusIconFirst.click();
+     |               ^ Error: locator.click: Test ended.
+  30 | 
+  31 | })
+  32 | 
+  33 | 
+```

@@ -1,0 +1,82 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: applitools.spec.js >> Login Form Functional Tests >> should navigate to app page on Sign In click
+- Location: tests\applitools.spec.js:12:7
+
+# Error details
+
+```
+Error: page.goto: NS_ERROR_NET_TIMEOUT
+Call log:
+  - navigating to "https://demo.applitools.com/", waiting until "load"
+
+```
+
+# Page snapshot
+
+```yaml
+- article "The connection has timed out" [ref=e3]:
+  - generic [ref=e4]:
+    - img "Illustration of a fox looking at disconnected network cables."
+  - generic [ref=e6]:
+    - heading "The connection has timed out" [level=1] [ref=e7]
+    - paragraph [ref=e8]:
+      - text: The server at
+      - strong [ref=e9]: demo.applitools.com
+      - text: is taking too long to respond.
+    - generic [ref=e10]:
+      - heading "What can you do about it?" [level=3] [ref=e11]
+      - list [ref=e12]:
+        - listitem [ref=e13]: The site could be temporarily unavailable or too busy. Try again in a few moments.
+        - listitem [ref=e14]: If you are unable to load any pages, check your computer’s network connection.
+        - listitem [ref=e15]: If your computer or network is protected by a firewall or proxy, make sure that Nightly is permitted to access the web.
+    - button "Try Again" [ref=e18]:
+      - generic [ref=e20]:
+        - generic: Try Again
+```
+
+# Test source
+
+```ts
+  1  | import { test, expect } from '@playwright/test';
+  2  | 
+  3  | test.describe('Login Form Functional Tests', () => {
+  4  |   
+  5  |   test.beforeEach(async ({ page }) => {
+  6  |     // Replace with your actual local server URL or path to the HTML file
+> 7  |     await page.goto('https://demo.applitools.com/'); 
+     |                ^ Error: page.goto: NS_ERROR_NET_TIMEOUT
+  8  |   });
+  9  | 
+  10 | 
+  11 | 
+  12 |   test('should navigate to app page on Sign In click', async ({ page }) => {
+  13 |     // Target the sign-in button anchor link by ID
+  14 |     const signInButton = page.locator('#log-in');
+  15 |     
+  16 |     // Click the button and wait for the target page navigation
+  17 |     await signInButton.click();
+  18 |     
+  19 |     // Assert that the URL changes to the expected path
+  20 |     await expect(page).toHaveURL(/.*\/app.html/);
+  21 |   });
+  22 | 
+  23 |   test('should find social media links', async ({ page }) => {
+  24 |     // Verify that the social icons exist based on their images
+  25 |     const twitterIcon = page.locator('img[src="img/social-icons/twitter.png"]');
+  26 |     const facebookIcon = page.locator('img[src="img/social-icons/facebook.png"]');
+  27 |     const linkedinIcon = page.locator('img[src="img/social-icons/linkedin.png"]');
+  28 | 
+  29 |     await expect(twitterIcon).toBeVisible();
+  30 |     await expect(facebookIcon).toBeVisible();
+  31 |     await expect(linkedinIcon).toBeVisible();
+  32 |   });
+  33 | });
+  34 | 
+```

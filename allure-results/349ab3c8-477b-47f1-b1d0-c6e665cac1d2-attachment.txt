@@ -1,0 +1,2 @@
+Total frames in web page: 10
+Switching to second frame and entering text... NaN

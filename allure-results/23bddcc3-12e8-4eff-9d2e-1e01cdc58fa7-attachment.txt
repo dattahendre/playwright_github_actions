@@ -1,0 +1,7 @@
+[INFO] 2026-06-20T18:39:19.158Z - Preparing OrangeHRM login test
+[INFO] 2026-06-20T18:39:19.717Z - Test: TC_OHRM_004 - Empty password validation
+[INFO] 2026-06-20T18:39:19.718Z - Navigating to login page
+[INFO] 2026-06-20T18:39:25.113Z - Entering username without password
+[INFO] 2026-06-20T18:39:30.278Z - Verifying validation message appears
+[INFO] 2026-06-20T18:39:30.280Z - Test passed - Empty password validation works
+[INFO] 2026-06-20T18:39:30.760Z - OrangeHRM login test completed

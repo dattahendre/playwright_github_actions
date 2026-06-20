@@ -1,0 +1,25 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: api\placeholderApiRefactored.spec.js >> JSONPlaceholder API Tests - Refactored >> TC_API_005 - POST /posts creates new post
+- Location: tests\api\placeholderApiRefactored.spec.js:149:3
+
+# Error details
+
+```
+Error: apiRequestContext.post: connect ECONNREFUSED ::1:3000
+Call log:
+  - → POST http://localhost:3000/posts
+    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0.2) Gecko/20100101 Firefox/150.0.2
+    - accept: */*
+    - accept-encoding: gzip,deflate,br
+    - Authorization: Bearer test-token
+    - Content-Type: application/json
+    - content-length: 61
+
+```

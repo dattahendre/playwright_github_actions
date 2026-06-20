@@ -1,0 +1,4 @@
+[INFO] 2026-06-20T18:25:33.235Z - API Test Suite started
+[INFO] 2026-06-20T18:25:33.253Z - Test: TC_API_010 - Validate response headers
+[INFO] 2026-06-20T18:25:33.253Z - Making GET request
+[INFO] 2026-06-20T18:25:33.582Z - API test completed

@@ -1,0 +1,94 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: handledialog.spec.js >> Handle prompt test case
+- Location: tests\handledialog.spec.js:39:5
+
+# Error details
+
+```
+Error: expect(received).toContain(expected) // indexOf
+
+Expected substring: "Automation Testing user"
+Received string:    "Please enter your name"
+```
+
+```
+Error: locator.click: Test ended.
+Call log:
+  - waiting for getByRole('button', { name: 'click the button to demonstrate the prompt box ' })
+    - locator resolved to <button class="btn btn-info" onclick="promptbox()">click the button to demonstrate the prompt box </button>
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - performing click action
+
+```
+
+# Test source
+
+```ts
+  1  | const{test,expect=require('@faker-js/faker').expect}=require('@playwright/test');
+  2  | 
+  3  | test('Handle dialog test case',async({page})=>{
+  4  |     await page.goto('https://demo.automationtesting.in/Alerts.html');
+  5  |     page.on('dialog',async(dialog)=>{
+  6  |         //write assertion to handle alert
+  7  |         expect(dialog.type()).toBe('alert');
+  8  |         //validate the alert message
+  9  |         expect(dialog.message()).toBe('I am an alert box!');
+  10 |         //accept the alert
+  11 |         await dialog.accept();
+  12 | 
+  13 |         //click on alert with ok and cancel button
+  14 |         await page.click("//a[contains(text(),'Alert with OK & Cancel')]");
+  15 |     })
+  16 |     //click on alert button to trigger alert
+  17 |     await page.click("//button[contains(text(),'click the button to display an')]");
+  18 |     }); 
+  19 | 
+  20 |     test('Handle confirmation test case',async({page})=>{
+  21 |     await page.goto('https://demo.automationtesting.in/Alerts.html');
+  22 |     page.on('dialog',async(dialog)=>{
+  23 |         //write assertion to handle alert
+  24 |         expect(dialog.type()).toBe('confirm');
+  25 |         //validate the alert message
+  26 |         expect(dialog.message()).toBe('Press a Button !');
+  27 |         //accept the alert
+  28 |         await dialog.dismiss();
+  29 | 
+  30 |         //click on alert with ok and cancel button
+  31 |         await page.click("//a[contains(text(),'Alert with OK & Cancel')]");
+  32 |     })
+  33 |     //click on alert with ok & cancel button to trigger confirmation alert
+  34 |     await page.getByRole('link', { name: 'Alert with OK & Cancel' }).click();
+  35 |        //click on alert button to trigger alert
+  36 |     await page.getByRole('button', { name: 'click the button to display a confirm box' }).click();
+  37 |     }); 
+  38 | 
+  39 |     test('Handle prompt test case',async({page})=>{
+  40 |     await page.goto('https://demo.automationtesting.in/Alerts.html');
+  41 |     page.on('dialog',async(dialog)=>{
+  42 |         //write assertion to handle alert
+  43 |         expect(dialog.type()).toBe('prompt');
+  44 |         //validate the alert message
+  45 |         expect(dialog.message()).toContain('Automation Testing user');
+  46 |         //accept the alert
+  47 |         await dialog.accept('Playwright');
+  48 | 
+  49 |         
+  50 |     })
+  51 |     //click on alert with ok & cancel button to trigger confirmation alert
+  52 |     await page.getByRole('link', { name: 'Alert with Textbox ' }).click();
+  53 |        //click on alert button to trigger alert
+> 54 |     await page.getByRole('button', { name: 'click the button to demonstrate the prompt box ' }).click();
+     |                                                                                                 ^ Error: locator.click: Test ended.
+  55 |     }); 
+```

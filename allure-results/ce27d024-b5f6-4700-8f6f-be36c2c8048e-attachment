@@ -1,0 +1,467 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui\orangeHrmLoginRefactored.spec.js >> OrangeHRM Login Tests >> TC_OHRM_001 - User can login with valid credentials (Admin)
+- Location: tests\ui\orangeHrmLoginRefactored.spec.js:96:3
+
+# Error details
+
+```
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: true
+Received: false
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - generic:
+    - complementary [ref=e4]:
+      - navigation "Sidepanel" [ref=e5]:
+        - generic [ref=e6]:
+          - link "client brand banner" [ref=e7] [cursor=pointer]:
+            - /url: https://www.orangehrm.com/
+            - img "client brand banner" [ref=e9]
+          - text: 
+        - generic [ref=e10]:
+          - generic [ref=e11]:
+            - generic [ref=e12]:
+              - textbox "Search" [ref=e15]
+              - button "" [ref=e16] [cursor=pointer]:
+                - generic [ref=e17]: 
+            - separator [ref=e18]
+          - list [ref=e19]:
+            - listitem [ref=e20]:
+              - link "Admin" [ref=e21] [cursor=pointer]:
+                - /url: /web/index.php/admin/viewAdminModule
+                - generic [ref=e24]: Admin
+            - listitem [ref=e25]:
+              - link "PIM" [ref=e26] [cursor=pointer]:
+                - /url: /web/index.php/pim/viewPimModule
+                - generic [ref=e40]: PIM
+            - listitem [ref=e41]:
+              - link "Leave" [ref=e42] [cursor=pointer]:
+                - /url: /web/index.php/leave/viewLeaveModule
+                - generic [ref=e45]: Leave
+            - listitem [ref=e46]:
+              - link "Time" [ref=e47] [cursor=pointer]:
+                - /url: /web/index.php/time/viewTimeModule
+                - generic [ref=e53]: Time
+            - listitem [ref=e54]:
+              - link "Recruitment" [ref=e55] [cursor=pointer]:
+                - /url: /web/index.php/recruitment/viewRecruitmentModule
+                - generic [ref=e61]: Recruitment
+            - listitem [ref=e62]:
+              - link "My Info" [ref=e63] [cursor=pointer]:
+                - /url: /web/index.php/pim/viewMyDetails
+                - generic [ref=e69]: My Info
+            - listitem [ref=e70]:
+              - link "Performance" [ref=e71] [cursor=pointer]:
+                - /url: /web/index.php/performance/viewPerformanceModule
+                - generic [ref=e79]: Performance
+            - listitem [ref=e80]:
+              - link "Dashboard" [ref=e81] [cursor=pointer]:
+                - /url: /web/index.php/dashboard/index
+                - generic [ref=e84]: Dashboard
+            - listitem [ref=e85]:
+              - link "Directory" [ref=e86] [cursor=pointer]:
+                - /url: /web/index.php/directory/viewDirectory
+                - generic [ref=e89]: Directory
+            - listitem [ref=e90]:
+              - link "Maintenance" [ref=e91] [cursor=pointer]:
+                - /url: /web/index.php/maintenance/viewMaintenanceModule
+                - generic [ref=e95]: Maintenance
+            - listitem [ref=e96]:
+              - link "Claim" [ref=e97] [cursor=pointer]:
+                - /url: /web/index.php/claim/viewClaimModule
+                - img [ref=e100]
+                - generic [ref=e104]: Claim
+            - listitem [ref=e105]:
+              - link "Buzz" [ref=e106] [cursor=pointer]:
+                - /url: /web/index.php/buzz/viewBuzz
+                - generic [ref=e109]: Buzz
+    - banner [ref=e110]:
+      - generic [ref=e111]:
+        - generic [ref=e112]:
+          - text: 
+          - heading "Dashboard" [level=6] [ref=e114]
+        - link "Upgrade" [ref=e116]:
+          - /url: https://orangehrm.com/open-source/upgrade-to-advanced
+          - button "Upgrade" [ref=e117] [cursor=pointer]: Upgrade
+        - list [ref=e123]:
+          - listitem [ref=e124]:
+            - generic [ref=e125] [cursor=pointer]:
+              - img "profile picture" [ref=e126]
+              - paragraph [ref=e127]: manda12344 usereerrrf
+              - generic [ref=e128]: 
+      - navigation "Topbar Menu" [ref=e130]:
+        - list [ref=e131]:
+          - button "" [ref=e133] [cursor=pointer]:
+            - generic [ref=e134]: 
+  - generic [ref=e135]:
+    - generic [ref=e137]:
+      - generic [ref=e139]:
+        - generic [ref=e141]:
+          - generic [ref=e142]: 
+          - paragraph [ref=e143]: Time at Work
+        - separator [ref=e144]
+        - generic [ref=e146]:
+          - generic [ref=e147]:
+            - img "profile picture" [ref=e149]
+            - generic [ref=e150]:
+              - paragraph [ref=e151]: Punched In
+              - paragraph [ref=e152]: "Punched In: Jun 20th at 12:31 PM (GMT -6)"
+          - generic [ref=e153]:
+            - generic [ref=e154]: 0h 8m Today
+            - button "" [ref=e155] [cursor=pointer]:
+              - generic [ref=e156]: 
+          - separator [ref=e157]
+          - generic [ref=e158]:
+            - generic [ref=e159]:
+              - paragraph [ref=e160]: This Week
+              - paragraph [ref=e161]: Jun 15 - Jun 21
+            - generic [ref=e162]:
+              - generic [ref=e163]: 
+              - paragraph [ref=e164]: 0h 0m
+      - generic [ref=e168]:
+        - generic [ref=e170]:
+          - generic [ref=e171]: 
+          - paragraph [ref=e172]: My Actions
+        - separator [ref=e173]
+        - generic [ref=e175]:
+          - generic [ref=e176]:
+            - button [ref=e177] [cursor=pointer]
+            - paragraph [ref=e183] [cursor=pointer]: (2) Leave Requests to Approve
+          - generic [ref=e184]:
+            - button [ref=e185] [cursor=pointer]
+            - paragraph [ref=e191] [cursor=pointer]: (1) Pending Self Review
+          - generic [ref=e192]:
+            - button [ref=e193] [cursor=pointer]
+            - paragraph [ref=e202] [cursor=pointer]: (1) Candidate to Interview
+      - generic [ref=e204]:
+        - generic [ref=e206]:
+          - generic [ref=e207]: 
+          - paragraph [ref=e208]: Quick Launch
+        - separator [ref=e209]
+        - generic [ref=e211]:
+          - generic [ref=e212]:
+            - button "Assign Leave" [ref=e213] [cursor=pointer]
+            - generic "Assign Leave" [ref=e216]:
+              - paragraph [ref=e217]: Assign Leave
+          - generic [ref=e218]:
+            - button "Leave List" [ref=e219] [cursor=pointer]
+            - generic "Leave List" [ref=e226]:
+              - paragraph [ref=e227]: Leave List
+          - generic [ref=e228]:
+            - button "Timesheets" [ref=e229] [cursor=pointer]
+            - generic "Timesheets" [ref=e235]:
+              - paragraph [ref=e236]: Timesheets
+          - generic [ref=e237]:
+            - button "Apply Leave" [ref=e238] [cursor=pointer]
+            - generic "Apply Leave" [ref=e241]:
+              - paragraph [ref=e242]: Apply Leave
+          - generic [ref=e243]:
+            - button "My Leave" [ref=e244] [cursor=pointer]
+            - generic "My Leave" [ref=e249]:
+              - paragraph [ref=e250]: My Leave
+          - generic [ref=e251]:
+            - button "My Timesheet" [ref=e252] [cursor=pointer]
+            - generic "My Timesheet" [ref=e255]:
+              - paragraph [ref=e256]: My Timesheet
+      - generic [ref=e258]:
+        - generic [ref=e260]:
+          - generic [ref=e261]: 
+          - paragraph [ref=e262]: Buzz Latest Posts
+        - separator [ref=e263]
+        - generic [ref=e265]:
+          - generic [ref=e266]:
+            - generic [ref=e267] [cursor=pointer]:
+              - img "profile picture" [ref=e269]
+              - generic [ref=e270]:
+                - paragraph [ref=e271]: manda12344 akhil1122 usereerrrf
+                - paragraph [ref=e272]: 2020-08-10 09:08 AM
+            - separator [ref=e273]
+            - paragraph [ref=e274]: "Hi All; Linda has been blessed with a baby boy! Linda: With love, we welcome your dear new baby to this world. Congratulations!"
+          - generic [ref=e275]:
+            - generic [ref=e276] [cursor=pointer]:
+              - img "profile picture" [ref=e278]
+              - generic [ref=e279]:
+                - paragraph [ref=e280]: Sania Shaheen
+                - paragraph [ref=e281]: 2020-08-10 09:08 AM
+            - separator [ref=e282]
+            - paragraph [ref=e283]: "World Championship: What makes the perfect snooker player? Mark Selby: Robertson has one of the best techniques in the game. It is very, very straight and he fully commits to every single shot he plays. John Higgins: Every shot is repetitive. He always keeps the same technique and cues through the ball bang straight. Barry Hawkins: Robertson is textbook with his grip and has a ramrod solid cue action, delivering it in a straight line. Honourable mentions: Shaun Murphy, Ding Junhui, Jack Lisowski."
+          - generic [ref=e284]:
+            - generic [ref=e285] [cursor=pointer]:
+              - img "profile picture" [ref=e287]
+              - generic [ref=e288]:
+                - paragraph [ref=e289]: Rebecca Harmony
+                - paragraph [ref=e290]: 2020-08-10 09:04 AM
+            - separator [ref=e291]
+            - paragraph [ref=e292]: Throwback Thursdays!!
+            - img [ref=e293]
+          - generic [ref=e294]:
+            - generic [ref=e295] [cursor=pointer]:
+              - img "profile picture" [ref=e297]
+              - generic [ref=e298]:
+                - paragraph [ref=e299]: Russel Hamilton
+                - paragraph [ref=e300]: 2020-08-10 09:03 AM
+            - separator [ref=e301]
+            - paragraph [ref=e302]: Live SIMPLY Dream BIG Be GREATFULL Give LOVE Laugh LOT.......
+      - generic [ref=e304]:
+        - generic [ref=e305]:
+          - paragraph [ref=e310]: Employees on Leave Today
+          - generic [ref=e311] [cursor=pointer]: 
+        - separator [ref=e312]
+        - generic [ref=e314]:
+          - img "No Content" [ref=e315]
+          - paragraph [ref=e316]: No Employees are on Leave Today
+      - generic [ref=e318]:
+        - generic [ref=e320]:
+          - generic [ref=e321]: 
+          - paragraph [ref=e322]: Employee Distribution by Sub Unit
+        - separator [ref=e323]
+        - list [ref=e328]:
+          - listitem [ref=e329] [cursor=pointer]:
+            - generic "Engineering" [ref=e331]
+          - listitem [ref=e332] [cursor=pointer]:
+            - generic "Human Resources" [ref=e334]
+          - listitem [ref=e335] [cursor=pointer]:
+            - generic "Administration" [ref=e337]
+          - listitem [ref=e338] [cursor=pointer]:
+            - generic "Client Services" [ref=e340]
+          - listitem [ref=e341] [cursor=pointer]:
+            - generic "Unassigned" [ref=e343]
+      - generic [ref=e345]:
+        - generic [ref=e347]:
+          - generic [ref=e348]: 
+          - paragraph [ref=e349]: Employee Distribution by Location
+        - separator [ref=e350]
+        - list [ref=e355]:
+          - listitem [ref=e356] [cursor=pointer]:
+            - generic "Texas R&D" [ref=e358]
+          - listitem [ref=e359] [cursor=pointer]:
+            - generic "New York Sales Office" [ref=e361]
+          - listitem [ref=e362] [cursor=pointer]:
+            - generic "Unassigned" [ref=e364]
+    - generic [ref=e365]:
+      - paragraph [ref=e366]: OrangeHRM OS 5.8
+      - paragraph [ref=e367]:
+        - text: © 2005 - 2026
+        - link "OrangeHRM, Inc" [ref=e368] [cursor=pointer]:
+          - /url: http://www.orangehrm.com
+        - text: . All rights reserved.
+```
+
+# Test source
+
+```ts
+  23  | 
+  24  | // OrangeHRM Login Page Object
+  25  | class OrangeHRMLoginPage {
+  26  |   constructor(page) {
+  27  |     this.page = page;
+  28  |     this.usernameField = 'input[placeholder="Username"]';
+  29  |     this.passwordField = 'input[placeholder="Password"]';
+  30  |     this.loginButton = 'button[type="submit"]';
+  31  |     this.dashboardHeading = 'text=Dashboard';
+  32  |     this.errorMessage = '.oxd-alert-content';
+  33  |     this.screenshotPath = './screenshots';
+  34  |   }
+  35  | 
+  36  |   async navigateToLogin(url) {
+  37  |     await this.page.goto(url, {
+  38  |       waitUntil: 'domcontentloaded',
+  39  |       timeout: 60000
+  40  |     });
+  41  |   }
+  42  | 
+  43  |   async fillUsername(username) {
+  44  |     await this.page.getByPlaceholder('Username').fill(username);
+  45  |   }
+  46  | 
+  47  |   async fillPassword(password) {
+  48  |     await this.page.getByPlaceholder('Password').fill(password);
+  49  |   }
+  50  | 
+  51  |   async clickLoginButton() {
+  52  |     await this.page.getByRole('button', { name: 'Login' }).click();
+  53  |   }
+  54  | 
+  55  |   async login(username, password) {
+  56  |     await this.fillUsername(username);
+  57  |     await this.fillPassword(password);
+  58  |     await this.takeScreenshot('login-credentials-entered');
+  59  |     await this.clickLoginButton();
+  60  |     await this.page.waitForNavigation();
+  61  |   }
+  62  | 
+  63  |   async verifyDashboardVisible() {
+  64  |     return await this.page.getByRole('heading', { name: 'Dashboard' }).isVisible();
+  65  |   }
+  66  | 
+  67  |   async getDashboardHeading() {
+  68  |     return await this.page.getByRole('heading', { name: 'Dashboard' }).textContent();
+  69  |   }
+  70  | 
+  71  |   async getCurrentURL() {
+  72  |     return await this.page.url();
+  73  |   }
+  74  | 
+  75  |   async takeScreenshot(name) {
+  76  |     await this.page.screenshot({ path: `${this.screenshotPath}/${name}.png` });
+  77  |   }
+  78  | 
+  79  |   async getErrorMessage() {
+  80  |     return await this.page.locator(this.errorMessage).textContent();
+  81  |   }
+  82  | 
+  83  |   async verifyErrorMessageVisible() {
+  84  |     return await this.page.locator(this.errorMessage).isVisible();
+  85  |   }
+  86  | }
+  87  | 
+  88  | test.describe('OrangeHRM Login Tests', () => {
+  89  | 
+  90  |   const loginURL = 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login';
+  91  | 
+  92  |   test.beforeEach(async ({ logger }) => {
+  93  |     logger.info('Preparing OrangeHRM login test');
+  94  |   });
+  95  | 
+  96  |   test('TC_OHRM_001 - User can login with valid credentials (Admin)', 
+  97  |     async ({ page, logger }) => {
+  98  |       // Arrange
+  99  |       logger.info('Test: TC_OHRM_001 - Enter username and password and click login button');
+  100 |       const loginPage = new OrangeHRMLoginPage(page);
+  101 |       const validCredentials = {
+  102 |         username: 'Admin',
+  103 |         password: 'admin123'
+  104 |       };
+  105 | 
+  106 |       // Act
+  107 |       logger.info(`Navigating to OrangeHRM login page: ${loginURL}`);
+  108 |       await loginPage.navigateToLogin(loginURL);
+  109 | 
+  110 |       logger.info(`Filling credentials - Username: ${validCredentials.username}`);
+  111 |       await loginPage.fillUsername(validCredentials.username);
+  112 |       await loginPage.fillPassword(validCredentials.password);
+  113 | 
+  114 |       logger.info('Taking screenshot after entering credentials');
+  115 |       await loginPage.takeScreenshot('login-success');
+  116 | 
+  117 |       logger.info('Clicking login button');
+  118 |       await loginPage.clickLoginButton();
+  119 | 
+  120 |       // Assert
+  121 |       logger.info('Verifying dashboard is visible');
+  122 |       const isDashboardVisible = await loginPage.verifyDashboardVisible();
+> 123 |       expect(isDashboardVisible).toBe(true);
+      |                                  ^ Error: expect(received).toBe(expected) // Object.is equality
+  124 | 
+  125 |       logger.info('Verifying dashboard heading');
+  126 |       const dashboardHeading = await loginPage.getDashboardHeading();
+  127 |       expect(dashboardHeading).toContain('Dashboard');
+  128 | 
+  129 |       logger.info('Verifying URL after login');
+  130 |       const currentURL = await loginPage.getCurrentURL();
+  131 |       console.log('Current URL after login:', currentURL);
+  132 |       expect(currentURL).not.toContain('/auth/login');
+  133 | 
+  134 |       logger.info('Taking screenshot of dashboard');
+  135 |       await loginPage.takeScreenshot('login-dashboard');
+  136 | 
+  137 |       logger.info('Test passed successfully');
+  138 |     });
+  139 | 
+  140 |   test('TC_OHRM_002 - User cannot login with invalid credentials', 
+  141 |     async ({ page, logger }) => {
+  142 |       // Arrange
+  143 |       logger.info('Test: TC_OHRM_002 - Login with invalid credentials');
+  144 |       const loginPage = new OrangeHRMLoginPage(page);
+  145 |       const invalidCredentials = {
+  146 |         username: 'InvalidUser',
+  147 |         password: 'InvalidPassword'
+  148 |       };
+  149 | 
+  150 |       // Act
+  151 |       logger.info('Navigating to login page');
+  152 |       await loginPage.navigateToLogin(loginURL);
+  153 | 
+  154 |       logger.info('Entering invalid credentials');
+  155 |       await loginPage.fillUsername(invalidCredentials.username);
+  156 |       await loginPage.fillPassword(invalidCredentials.password);
+  157 | 
+  158 |       logger.info('Clicking login button');
+  159 |       await loginPage.clickLoginButton();
+  160 | 
+  161 |       // Wait for error message
+  162 |       await page.waitForTimeout(2000);
+  163 | 
+  164 |       // Assert
+  165 |       logger.info('Verifying error message is displayed');
+  166 |       const isErrorVisible = await loginPage.verifyErrorMessageVisible();
+  167 |       expect(isErrorVisible).toBe(true);
+  168 | 
+  169 |       logger.info('Verifying user is still on login page');
+  170 |       const url = await loginPage.getCurrentURL();
+  171 |       expect(url).toContain('/auth/login');
+  172 | 
+  173 |       logger.info('Test passed - Invalid login rejected');
+  174 |     });
+  175 | 
+  176 |   test('TC_OHRM_003 - User sees error with empty username', 
+  177 |     async ({ page, logger }) => {
+  178 |       // Arrange
+  179 |       logger.info('Test: TC_OHRM_003 - Empty username validation');
+  180 |       const loginPage = new OrangeHRMLoginPage(page);
+  181 | 
+  182 |       // Act
+  183 |       logger.info('Navigating to login page');
+  184 |       await loginPage.navigateToLogin(loginURL);
+  185 | 
+  186 |       logger.info('Leaving username empty and entering password');
+  187 |       await loginPage.fillPassword('admin123');
+  188 |       await loginPage.clickLoginButton();
+  189 | 
+  190 |       // Wait for validation
+  191 |       await page.waitForTimeout(2000);
+  192 | 
+  193 |       // Assert
+  194 |       logger.info('Verifying validation message appears');
+  195 |       const url = await loginPage.getCurrentURL();
+  196 |       expect(url).toContain('/auth/login');
+  197 | 
+  198 |       logger.info('Test passed - Empty field validation works');
+  199 |     });
+  200 | 
+  201 |   test('TC_OHRM_004 - User sees error with empty password', 
+  202 |     async ({ page, logger }) => {
+  203 |       // Arrange
+  204 |       logger.info('Test: TC_OHRM_004 - Empty password validation');
+  205 |       const loginPage = new OrangeHRMLoginPage(page);
+  206 | 
+  207 |       // Act
+  208 |       logger.info('Navigating to login page');
+  209 |       await loginPage.navigateToLogin(loginURL);
+  210 | 
+  211 |       logger.info('Entering username without password');
+  212 |       await loginPage.fillUsername('Admin');
+  213 |       await loginPage.clickLoginButton();
+  214 | 
+  215 |       // Wait for validation
+  216 |       await page.waitForTimeout(2000);
+  217 | 
+  218 |       // Assert
+  219 |       logger.info('Verifying validation message appears');
+  220 |       const url = await loginPage.getCurrentURL();
+  221 |       expect(url).toContain('/auth/login');
+  222 | 
+  223 |       logger.info('Test passed - Empty password validation works');
+```

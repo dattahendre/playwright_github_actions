@@ -1,0 +1,4 @@
+[INFO] 2026-06-20T18:25:28.750Z - API Test Suite started
+[INFO] 2026-06-20T18:25:28.818Z - Test: TC_API_003 - Validate post structure
+[INFO] 2026-06-20T18:25:28.818Z - Fetching post from /posts/1
+[INFO] 2026-06-20T18:25:29.198Z - API test completed

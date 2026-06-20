@@ -1,0 +1,221 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui\orangeHrmLoginRefactored.spec.js >> OrangeHRM Login Tests >> TC_OHRM_002 - User cannot login with invalid credentials
+- Location: tests\ui\orangeHrmLoginRefactored.spec.js:140:3
+
+# Error details
+
+```
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: true
+Received: false
+```
+
+# Test source
+
+```ts
+  67  |   async getDashboardHeading() {
+  68  |     return await this.page.getByRole('heading', { name: 'Dashboard' }).textContent();
+  69  |   }
+  70  | 
+  71  |   async getCurrentURL() {
+  72  |     return await this.page.url();
+  73  |   }
+  74  | 
+  75  |   async takeScreenshot(name) {
+  76  |     await this.page.screenshot({ path: `${this.screenshotPath}/${name}.png` });
+  77  |   }
+  78  | 
+  79  |   async getErrorMessage() {
+  80  |     return await this.page.locator(this.errorMessage).textContent();
+  81  |   }
+  82  | 
+  83  |   async verifyErrorMessageVisible() {
+  84  |     return await this.page.locator(this.errorMessage).isVisible();
+  85  |   }
+  86  | }
+  87  | 
+  88  | test.describe('OrangeHRM Login Tests', () => {
+  89  | 
+  90  |   const loginURL = 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login';
+  91  | 
+  92  |   test.beforeEach(async ({ logger }) => {
+  93  |     logger.info('Preparing OrangeHRM login test');
+  94  |   });
+  95  | 
+  96  |   test('TC_OHRM_001 - User can login with valid credentials (Admin)', 
+  97  |     async ({ page, logger }) => {
+  98  |       // Arrange
+  99  |       logger.info('Test: TC_OHRM_001 - Enter username and password and click login button');
+  100 |       const loginPage = new OrangeHRMLoginPage(page);
+  101 |       const validCredentials = {
+  102 |         username: 'Admin',
+  103 |         password: 'admin123'
+  104 |       };
+  105 | 
+  106 |       // Act
+  107 |       logger.info(`Navigating to OrangeHRM login page: ${loginURL}`);
+  108 |       await loginPage.navigateToLogin(loginURL);
+  109 | 
+  110 |       logger.info(`Filling credentials - Username: ${validCredentials.username}`);
+  111 |       await loginPage.fillUsername(validCredentials.username);
+  112 |       await loginPage.fillPassword(validCredentials.password);
+  113 | 
+  114 |       logger.info('Taking screenshot after entering credentials');
+  115 |       await loginPage.takeScreenshot('login-success');
+  116 | 
+  117 |       logger.info('Clicking login button');
+  118 |       await loginPage.clickLoginButton();
+  119 | 
+  120 |       // Assert
+  121 |       logger.info('Verifying dashboard is visible');
+  122 |       const isDashboardVisible = await loginPage.verifyDashboardVisible();
+  123 |       expect(isDashboardVisible).toBe(true);
+  124 | 
+  125 |       logger.info('Verifying dashboard heading');
+  126 |       const dashboardHeading = await loginPage.getDashboardHeading();
+  127 |       expect(dashboardHeading).toContain('Dashboard');
+  128 | 
+  129 |       logger.info('Verifying URL after login');
+  130 |       const currentURL = await loginPage.getCurrentURL();
+  131 |       console.log('Current URL after login:', currentURL);
+  132 |       expect(currentURL).not.toContain('/auth/login');
+  133 | 
+  134 |       logger.info('Taking screenshot of dashboard');
+  135 |       await loginPage.takeScreenshot('login-dashboard');
+  136 | 
+  137 |       logger.info('Test passed successfully');
+  138 |     });
+  139 | 
+  140 |   test('TC_OHRM_002 - User cannot login with invalid credentials', 
+  141 |     async ({ page, logger }) => {
+  142 |       // Arrange
+  143 |       logger.info('Test: TC_OHRM_002 - Login with invalid credentials');
+  144 |       const loginPage = new OrangeHRMLoginPage(page);
+  145 |       const invalidCredentials = {
+  146 |         username: 'InvalidUser',
+  147 |         password: 'InvalidPassword'
+  148 |       };
+  149 | 
+  150 |       // Act
+  151 |       logger.info('Navigating to login page');
+  152 |       await loginPage.navigateToLogin(loginURL);
+  153 | 
+  154 |       logger.info('Entering invalid credentials');
+  155 |       await loginPage.fillUsername(invalidCredentials.username);
+  156 |       await loginPage.fillPassword(invalidCredentials.password);
+  157 | 
+  158 |       logger.info('Clicking login button');
+  159 |       await loginPage.clickLoginButton();
+  160 | 
+  161 |       // Wait for error message
+  162 |       await page.waitForTimeout(2000);
+  163 | 
+  164 |       // Assert
+  165 |       logger.info('Verifying error message is displayed');
+  166 |       const isErrorVisible = await loginPage.verifyErrorMessageVisible();
+> 167 |       expect(isErrorVisible).toBe(true);
+      |                              ^ Error: expect(received).toBe(expected) // Object.is equality
+  168 | 
+  169 |       logger.info('Verifying user is still on login page');
+  170 |       const url = await loginPage.getCurrentURL();
+  171 |       expect(url).toContain('/auth/login');
+  172 | 
+  173 |       logger.info('Test passed - Invalid login rejected');
+  174 |     });
+  175 | 
+  176 |   test('TC_OHRM_003 - User sees error with empty username', 
+  177 |     async ({ page, logger }) => {
+  178 |       // Arrange
+  179 |       logger.info('Test: TC_OHRM_003 - Empty username validation');
+  180 |       const loginPage = new OrangeHRMLoginPage(page);
+  181 | 
+  182 |       // Act
+  183 |       logger.info('Navigating to login page');
+  184 |       await loginPage.navigateToLogin(loginURL);
+  185 | 
+  186 |       logger.info('Leaving username empty and entering password');
+  187 |       await loginPage.fillPassword('admin123');
+  188 |       await loginPage.clickLoginButton();
+  189 | 
+  190 |       // Wait for validation
+  191 |       await page.waitForTimeout(2000);
+  192 | 
+  193 |       // Assert
+  194 |       logger.info('Verifying validation message appears');
+  195 |       const url = await loginPage.getCurrentURL();
+  196 |       expect(url).toContain('/auth/login');
+  197 | 
+  198 |       logger.info('Test passed - Empty field validation works');
+  199 |     });
+  200 | 
+  201 |   test('TC_OHRM_004 - User sees error with empty password', 
+  202 |     async ({ page, logger }) => {
+  203 |       // Arrange
+  204 |       logger.info('Test: TC_OHRM_004 - Empty password validation');
+  205 |       const loginPage = new OrangeHRMLoginPage(page);
+  206 | 
+  207 |       // Act
+  208 |       logger.info('Navigating to login page');
+  209 |       await loginPage.navigateToLogin(loginURL);
+  210 | 
+  211 |       logger.info('Entering username without password');
+  212 |       await loginPage.fillUsername('Admin');
+  213 |       await loginPage.clickLoginButton();
+  214 | 
+  215 |       // Wait for validation
+  216 |       await page.waitForTimeout(2000);
+  217 | 
+  218 |       // Assert
+  219 |       logger.info('Verifying validation message appears');
+  220 |       const url = await loginPage.getCurrentURL();
+  221 |       expect(url).toContain('/auth/login');
+  222 | 
+  223 |       logger.info('Test passed - Empty password validation works');
+  224 |     });
+  225 | 
+  226 |   test('TC_OHRM_005 - User can successfully login and logout', 
+  227 |     async ({ page, logger }) => {
+  228 |       // Arrange
+  229 |       logger.info('Test: TC_OHRM_005 - Complete login and logout flow');
+  230 |       const loginPage = new OrangeHRMLoginPage(page);
+  231 | 
+  232 |       // Act - Login
+  233 |       logger.info('Navigating and logging in');
+  234 |       await loginPage.navigateToLogin(loginURL);
+  235 |       await loginPage.login('Admin', 'admin123');
+  236 | 
+  237 |       // Assert - Logged in
+  238 |       logger.info('Verifying login successful');
+  239 |       const isDashboardVisible = await loginPage.verifyDashboardVisible();
+  240 |       expect(isDashboardVisible).toBe(true);
+  241 | 
+  242 |       // Act - Logout
+  243 |       logger.info('Clicking user menu for logout');
+  244 |       await page.getByRole('img', { name: 'profile picture' }).click();
+  245 |       
+  246 |       logger.info('Clicking logout button');
+  247 |       await page.getByRole('menuitem', { name: 'Logout' }).click();
+  248 | 
+  249 |       // Assert - Logged out
+  250 |       logger.info('Verifying redirected to login page');
+  251 |       await page.waitForNavigation();
+  252 |       const logoutURL = await loginPage.getCurrentURL();
+  253 |       expect(logoutURL).toContain('/auth/login');
+  254 | 
+  255 |       logger.info('Test passed - Login and logout successful');
+  256 |     });
+  257 | 
+  258 |   test.afterEach(async ({ logger }) => {
+  259 |     logger.info('OrangeHRM login test completed');
+  260 |   });
+  261 | });
+  262 | 
+```

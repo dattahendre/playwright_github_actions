@@ -1,0 +1,159 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ui\loginTest.spec.js >> Login Page Tests >> TC_007 - Password field is masked
+- Location: tests\ui\loginTest.spec.js:83:3
+
+# Error details
+
+```
+Error: page.goto: NS_ERROR_CONNECTION_REFUSED
+Call log:
+  - navigating to "http://localhost:3000/login", waiting until "load"
+
+```
+
+# Page snapshot
+
+```yaml
+- article "Looks like there’s a problem with this site" [ref=e3]:
+  - img "Illustration of a fox looking at disconnected network cables." [ref=e5]
+  - generic [ref=e7]:
+    - heading "Looks like there’s a problem with this site" [level=1] [ref=e8]
+    - paragraph [ref=e9]:
+      - text: Nightly can’t connect to the server at
+      - strong [ref=e10]: localhost:3000
+    - generic [ref=e11]:
+      - heading "What can you do about it?" [level=3] [ref=e12]
+      - paragraph [ref=e13]: Try connecting on a different device. Check your modem or router. Disconnect and reconnect to Wi-Fi.
+    - button "Try Again" [ref=e16]:
+      - generic [ref=e18]:
+        - generic: Try Again
+```
+
+# Test source
+
+```ts
+  1   | /**
+  2   |  * BasePage.js - Base class for all page objects
+  3   |  * Contains common methods used across all page objects
+  4   |  */
+  5   | 
+  6   | class BasePage {
+  7   |   constructor(page) {
+  8   |     this.page = page;
+  9   |   }
+  10  | 
+  11  |   /**
+  12  |    * Navigate to a specific URL
+  13  |    * @param {string} url - The URL to navigate to
+  14  |    */
+  15  |   async goto(url) {
+> 16  |     await this.page.goto(url);
+      |                     ^ Error: page.goto: NS_ERROR_CONNECTION_REFUSED
+  17  |   }
+  18  | 
+  19  |   /**
+  20  |    * Click on an element
+  21  |    * @param {string} selector - CSS selector of the element
+  22  |    */
+  23  |   async click(selector) {
+  24  |     await this.page.click(selector);
+  25  |   }
+  26  | 
+  27  |   /**
+  28  |    * Fill text in an input field
+  29  |    * @param {string} selector - CSS selector of the element
+  30  |    * @param {string} text - Text to fill
+  31  |    */
+  32  |   async fill(selector, text) {
+  33  |     await this.page.fill(selector, text);
+  34  |   }
+  35  | 
+  36  |   /**
+  37  |    * Get text content from an element
+  38  |    * @param {string} selector - CSS selector of the element
+  39  |    * @returns {Promise<string>} Text content
+  40  |    */
+  41  |   async getText(selector) {
+  42  |     return await this.page.textContent(selector);
+  43  |   }
+  44  | 
+  45  |   /**
+  46  |    * Wait for an element to be visible
+  47  |    * @param {string} selector - CSS selector of the element
+  48  |    * @param {number} timeout - Timeout in milliseconds
+  49  |    */
+  50  |   async waitForElement(selector, timeout = 5000) {
+  51  |     await this.page.waitForSelector(selector, { timeout });
+  52  |   }
+  53  | 
+  54  |   /**
+  55  |    * Check if an element is visible
+  56  |    * @param {string} selector - CSS selector of the element
+  57  |    * @returns {Promise<boolean>} True if visible, false otherwise
+  58  |    */
+  59  |   async isElementVisible(selector) {
+  60  |     try {
+  61  |       await this.page.waitForSelector(selector, { timeout: 2000 });
+  62  |       return true;
+  63  |     } catch (error) {
+  64  |       return false;
+  65  |     }
+  66  |   }
+  67  | 
+  68  |   /**
+  69  |    * Get attribute value from an element
+  70  |    * @param {string} selector - CSS selector of the element
+  71  |    * @param {string} attributeName - Name of the attribute
+  72  |    * @returns {Promise<string>} Attribute value
+  73  |    */
+  74  |   async getAttribute(selector, attributeName) {
+  75  |     return await this.page.getAttribute(selector, attributeName);
+  76  |   }
+  77  | 
+  78  |   /**
+  79  |    * Take a screenshot
+  80  |    * @param {string} name - Name of the screenshot file
+  81  |    */
+  82  |   async takeScreenshot(name) {
+  83  |     await this.page.screenshot({ path: `./screenshots/${name}.png` });
+  84  |   }
+  85  | 
+  86  |   /**
+  87  |    * Get current page URL
+  88  |    * @returns {Promise<string>} Current URL
+  89  |    */
+  90  |   async getCurrentUrl() {
+  91  |     return this.page.url();
+  92  |   }
+  93  | 
+  94  |   /**
+  95  |    * Go back to previous page
+  96  |    */
+  97  |   async goBack() {
+  98  |     await this.page.goBack();
+  99  |   }
+  100 | 
+  101 |   /**
+  102 |    * Refresh the page
+  103 |    */
+  104 |   async refresh() {
+  105 |     await this.page.reload();
+  106 |   }
+  107 | 
+  108 |   /**
+  109 |    * Wait for navigation
+  110 |    */
+  111 |   async waitForNavigation() {
+  112 |     await this.page.waitForNavigation();
+  113 |   }
+  114 | 
+  115 |   /**
+  116 |    * Press a key
+```

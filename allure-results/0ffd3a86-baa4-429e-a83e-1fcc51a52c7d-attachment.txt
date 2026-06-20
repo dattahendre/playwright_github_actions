@@ -1,0 +1,4 @@
+[INFO] 2026-06-20T18:25:30.130Z - API Test Suite started
+[INFO] 2026-06-20T18:25:30.152Z - Test: TC_API_005 - Create new post
+[INFO] 2026-06-20T18:25:30.152Z - Creating new post with data:
+[INFO] 2026-06-20T18:25:30.500Z - API test completed

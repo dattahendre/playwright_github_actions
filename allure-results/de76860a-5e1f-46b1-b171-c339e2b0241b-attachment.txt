@@ -1,0 +1,4 @@
+[INFO] 2026-06-20T18:40:03.487Z - API Test Suite started
+[INFO] 2026-06-20T18:40:03.501Z - Test: TC_API_007 - Delete post
+[INFO] 2026-06-20T18:40:03.501Z - Deleting post 1
+[INFO] 2026-06-20T18:40:03.855Z - API test completed

@@ -1,0 +1,47 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: fileupload.spec.js >> test
+- Location: tests\fileupload.spec.js:3:5
+
+# Error details
+
+```
+Error: page.goto: SSL peer certificate or SSH remote key was not OK
+Call log:
+  - navigating to "https://cgi-lib.berkeley.edu/ex/fup.html", waiting until "load"
+
+```
+
+# Test source
+
+```ts
+  1  | import { test, expect } from '@playwright/test';
+  2  | 
+  3  | test('test', async ({ page }) => {
+> 4  |   await page.goto('https://cgi-lib.berkeley.edu/ex/fup.html');
+     |              ^ Error: page.goto: SSL peer certificate or SSH remote key was not OK
+  5  |   await expect(page.getByRole('heading', { name: 'Sample File Upload Form' })).toBeVisible();
+  6  |   await expect(page.getByRole('heading', { name: 'Please fill in the file-' })).toBeVisible();
+  7  |   await page.locator('//input[@name="upfile"]').setInputFiles('D:/Swamini/Playwright/Tests/fileupload.spec.js');
+  8  |   // click on press button to upload file
+  9  |   await page.getByRole('button', { name: 'Press' }).click();
+  10 |   //verify file is uploaded successfully
+  11 |   //await expect(page.getByText('You've uploaded a file.  Your notes on the file were:')).toBeVisible();
+  12 |   //store the uploaded file name for verification
+  13 |   const uploadedFileName = await page.locator("//p[contains(text(),'You')]").textContent();
+  14 | 
+  15 |   console.log("Uploaded file name:", uploadedFileName);
+  16 |   await page.waitForTimeout(5000);
+  17 |   //closethe browser
+  18 |   await page.close();
+  19 | 
+  20 | });
+  21 | 
+  22 | 
+```

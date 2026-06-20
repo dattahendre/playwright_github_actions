@@ -1,0 +1,7 @@
+[INFO] 2026-06-20T18:29:41.611Z - Preparing OrangeHRM login test
+[INFO] 2026-06-20T18:29:41.999Z - Test: TC_OHRM_002 - Login with invalid credentials
+[INFO] 2026-06-20T18:29:41.999Z - Navigating to login page
+[INFO] 2026-06-20T18:29:44.516Z - Entering invalid credentials
+[INFO] 2026-06-20T18:29:46.198Z - Clicking login button
+[INFO] 2026-06-20T18:29:48.302Z - Verifying error message is displayed
+[INFO] 2026-06-20T18:29:49.005Z - OrangeHRM login test completed

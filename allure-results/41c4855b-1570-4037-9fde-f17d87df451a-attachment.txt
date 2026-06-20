@@ -1,0 +1,4 @@
+[INFO] 2026-06-20T18:25:31.790Z - API Test Suite started
+[INFO] 2026-06-20T18:25:31.805Z - Test: TC_API_008 - Get comments for post
+[INFO] 2026-06-20T18:25:31.805Z - Fetching comments for post 1
+[INFO] 2026-06-20T18:25:32.167Z - API test completed

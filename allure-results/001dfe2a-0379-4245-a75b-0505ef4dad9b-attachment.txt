@@ -1,0 +1,4 @@
+[INFO] 2026-06-20T18:39:34.173Z - Preparing OrangeHRM login test
+[INFO] 2026-06-20T18:39:34.965Z - Test: TC_OHRM_005 - Complete login and logout flow
+[INFO] 2026-06-20T18:39:34.965Z - Navigating and logging in
+[INFO] 2026-06-20T18:40:34.316Z - OrangeHRM login test completed
