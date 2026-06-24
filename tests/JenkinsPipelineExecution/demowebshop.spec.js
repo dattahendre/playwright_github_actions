@@ -30,8 +30,7 @@ test('test', async ({ page }) => {
   await page.getByRole('button', { name: 'Add to cart' }).first().click();
    await screenshotPage.takeRandomScreenshot(true);
   // Assert that the expected element is visible on the page.
-  //await expect(page.getByText('Build your own cheap computer Build it Availability: In stock Free shipping 841')).toBeVisible();
-  // Click the element to trigger the next user action.
+  
   await page.getByRole('textbox', { name: 'Qty:' }).click();
    await screenshotPage.takeRandomScreenshot(true);
   // Fill the target input field with the specified value.
