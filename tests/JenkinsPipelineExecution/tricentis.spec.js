@@ -47,7 +47,6 @@ test("Tricentis sample test case",async function ({page}){
    // await expect(page.getByRole('heading', { name: 'Cloud-based and flexibly deployed test automation for optimized end-to-end testing of all your applications.' })).toBeVisible();
    // close browser after test case execution
    // Close the current page or browser at the end of the test.
-   await page.close();
     
 });
 
