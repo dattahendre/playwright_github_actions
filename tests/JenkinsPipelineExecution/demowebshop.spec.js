@@ -78,5 +78,5 @@ test('test', async ({ page }) => {
    await screenshotPage.takeRandomScreenshot(true);
   //close the browser 
   // Close the current page or browser at the end of the test.
-  await page.close();
+  
 });
