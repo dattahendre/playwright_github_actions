@@ -1,0 +1,400 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: demowebshop.spec.js >> test
+- Location: tests\demowebshop.spec.js:6:5
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: getByText('Build your own cheap computer Build it Availability: In stock Free shipping 841')
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" with timeout 5000ms
+  - waiting for getByText('Build your own cheap computer Build it Availability: In stock Free shipping 841')
+    - waiting for" https://demowebshop.tricentis.com/build-your-cheap-own-computer" navigation to finish...
+    - navigated to "https://demowebshop.tricentis.com/build-your-cheap-own-computer"
+
+```
+
+```yaml
+- link "Tricentis Demo Web Shop":
+  - /url: /
+  - img "Tricentis Demo Web Shop"
+- list:
+  - listitem:
+    - link "Register":
+      - /url: /register
+  - listitem:
+    - link "Log in":
+      - /url: /login
+  - listitem:
+    - link "Shopping cart (0)":
+      - /url: /cart
+  - listitem:
+    - link "Wishlist (0)":
+      - /url: /wishlist
+- status
+- textbox: Search store
+- button "Search"
+- list:
+  - listitem:
+    - link "Books":
+      - /url: /books
+  - listitem:
+    - link "Computers":
+      - /url: /computers
+  - listitem:
+    - link "Electronics":
+      - /url: /electronics
+  - listitem:
+    - link "Apparel & Shoes":
+      - /url: /apparel-shoes
+  - listitem:
+    - link "Digital downloads":
+      - /url: /digital-downloads
+  - listitem:
+    - link "Jewelry":
+      - /url: /jewelry
+  - listitem:
+    - link "Gift Cards":
+      - /url: /gift-cards
+- strong: Categories
+- list:
+  - listitem:
+    - link "Books":
+      - /url: /books
+  - listitem:
+    - link "Computers":
+      - /url: /computers
+    - list:
+      - listitem:
+        - link "Desktops":
+          - /url: /desktops
+      - listitem:
+        - link "Notebooks":
+          - /url: /notebooks
+      - listitem:
+        - link "Accessories":
+          - /url: /accessories
+  - listitem:
+    - link "Electronics":
+      - /url: /electronics
+  - listitem:
+    - link "Apparel & Shoes":
+      - /url: /apparel-shoes
+  - listitem:
+    - link "Digital downloads":
+      - /url: /digital-downloads
+  - listitem:
+    - link "Jewelry":
+      - /url: /jewelry
+  - listitem:
+    - link "Gift Cards":
+      - /url: /gift-cards
+- strong: Manufacturers
+- list:
+  - listitem:
+    - link "Tricentis":
+      - /url: /tricentis
+- strong: Newsletter
+- text: "Sign up for our newsletter:"
+- textbox
+- button "Subscribe"
+- list:
+  - listitem:
+    - link "Home":
+      - /url: /
+    - text: /
+  - listitem:
+    - link "Computers":
+      - /url: /computers
+    - text: /
+  - listitem:
+    - link "Desktops":
+      - /url: /desktops
+    - text: /
+  - listitem:
+    - strong: Build your own cheap computer
+- img "Picture of Build your own cheap computer"
+- link "Picture of Build your own cheap computer":
+  - /url: https://demowebshop.tricentis.com/content/images/thumbs/0000172_build-your-own-cheap-computer.jpeg
+  - img "Picture of Build your own cheap computer"
+- link "Picture of Build your own cheap computer":
+  - /url: https://demowebshop.tricentis.com/content/images/thumbs/0000173_build-your-own-cheap-computer.jpeg
+  - img "Picture of Build your own cheap computer"
+- link "Picture of Build your own cheap computer":
+  - /url: https://demowebshop.tricentis.com/content/images/thumbs/0000174_build-your-own-cheap-computer.jpeg
+  - img "Picture of Build your own cheap computer"
+- heading "Build your own cheap computer" [level=1]
+- text: "Build it Availability: In stock Free shipping"
+- link "923 review(s)":
+  - /url: /productreviews/72
+- text: "|"
+- link "Add your review":
+  - /url: /productreviews/72
+- term: Processor *
+- definition:
+  - list:
+    - listitem:
+      - radio "Slow"
+      - text: Slow
+    - listitem:
+      - radio "Medium [+15.00]" [checked]
+      - text: Medium [+15.00]
+    - listitem:
+      - radio "Fast [+100.00]"
+      - text: Fast [+100.00]
+- term: RAM *
+- definition:
+  - list:
+    - listitem:
+      - radio "8 GB [+60.00]"
+      - text: 8 GB [+60.00]
+    - listitem:
+      - radio "2 GB" [checked]
+      - text: 2 GB
+    - listitem:
+      - radio "4 GB [+20.00]"
+      - text: 4 GB [+20.00]
+- term: HDD *
+- definition:
+  - list:
+    - listitem:
+      - radio "320 GB" [checked]
+      - text: 320 GB
+    - listitem:
+      - radio "400 GB [+100.00]"
+      - text: 400 GB [+100.00]
+- term: Software
+- definition:
+  - list:
+    - listitem:
+      - checkbox "Image Viever [+5.00]"
+      - text: Image Viever [+5.00]
+    - listitem:
+      - checkbox "Office Suite [+100.00]"
+      - text: Office Suite [+100.00]
+    - listitem:
+      - checkbox "Other Office Suite [+40.00]"
+      - text: Other Office Suite [+40.00]
+- text: "800.00 Qty:"
+- textbox "Qty:": "1"
+- button "Add to cart"
+- button "Email a friend"
+- button "Add to compare list"
+- paragraph: Fight back against cluttered workspaces with this stylish All-in-One desktop PC, featuring powerful computing resources and a stunning 20.1-inch widescreen display with stunning HiColor LCD technology. It has a built-in microphone and a camera with face-tracking technology that allows for easy communication with friends and family. And it has a built-in DVD burner so you can create a digital entertainment library for personal viewing at your convenience. Easy to setup and even easier to use, it includes an elegantly designed keyboard and a USB mouse.
+- strong: Product tags
+- list:
+  - listitem:
+    - link "computer":
+      - /url: /producttag/6/computer
+    - text: (10)
+  - listitem: ","
+  - listitem:
+    - link "awesome":
+      - /url: /producttag/8/awesome
+    - text: (20)
+- strong: Customers who bought this item also bought
+- link "Picture of Simple Computer":
+  - /url: /simple-computer
+  - img "Picture of Simple Computer"
+- heading "Simple Computer" [level=2]:
+  - link "Simple Computer":
+    - /url: /simple-computer
+- text: "800.00"
+- button "Add to cart"
+- link "Picture of Build your own expensive computer":
+  - /url: /build-your-own-expensive-computer-2
+  - img "Picture of Build your own expensive computer"
+- heading "Build your own expensive computer" [level=2]:
+  - link "Build your own expensive computer":
+    - /url: /build-your-own-expensive-computer-2
+- text: "1800.00"
+- button "Add to cart"
+- link "Picture of Blue and green Sneaker":
+  - /url: /blue-and-green-sneaker
+  - img "Picture of Blue and green Sneaker"
+- heading "Blue and green Sneaker" [level=2]:
+  - link "Blue and green Sneaker":
+    - /url: /blue-and-green-sneaker
+- text: "11.00"
+- button "Add to cart"
+- heading "Information" [level=3]
+- list:
+  - listitem:
+    - link "Sitemap":
+      - /url: /sitemap
+  - listitem:
+    - link "Shipping & Returns":
+      - /url: /shipping-returns
+  - listitem:
+    - link "Privacy Notice":
+      - /url: /privacy-policy
+  - listitem:
+    - link "Conditions of Use":
+      - /url: /conditions-of-use
+  - listitem:
+    - link "About us":
+      - /url: /about-us
+  - listitem:
+    - link "Contact us":
+      - /url: /contactus
+- heading "Customer service" [level=3]
+- list:
+  - listitem:
+    - link "Search":
+      - /url: /search
+  - listitem:
+    - link "News":
+      - /url: /news
+  - listitem:
+    - link "Blog":
+      - /url: /blog
+  - listitem:
+    - link "Recently viewed products":
+      - /url: /recentlyviewedproducts
+  - listitem:
+    - link "Compare products list":
+      - /url: /compareproducts
+  - listitem:
+    - link "New products":
+      - /url: /newproducts
+- heading "My account" [level=3]
+- list:
+  - listitem:
+    - link "My account":
+      - /url: /customer/info
+  - listitem:
+    - link "Orders":
+      - /url: /customer/orders
+  - listitem:
+    - link "Addresses":
+      - /url: /customer/addresses
+  - listitem:
+    - link "Shopping cart":
+      - /url: /cart
+  - listitem:
+    - link "Wishlist":
+      - /url: /wishlist
+- heading "Follow us" [level=3]
+- list:
+  - listitem:
+    - link "Facebook":
+      - /url: http://www.facebook.com/nopCommerce
+  - listitem:
+    - link "Twitter":
+      - /url: https://twitter.com/nopCommerce
+  - listitem:
+    - link "RSS":
+      - /url: /news/rss/1
+  - listitem:
+    - link "YouTube":
+      - /url: http://www.youtube.com/user/nopCommerce
+  - listitem:
+    - link "Google+":
+      - /url: https://plus.google.com/+nopcommerce
+- text: Powered by
+- link "nopCommerce":
+  - /url: http://www.nopcommerce.com/
+- text: Copyright © 2026 Tricentis Demo Web Shop. All rights reserved.
+```
+
+# Test source
+
+```ts
+  1  | // Import Playwright test helpers and any required libraries.
+  2  | import { test, expect } from '@playwright/test';
+  3  | // 1. Import your Screenshot POM class (adjust path if your folders are structured differently)
+  4  | const { ScreenshotPage } = require('./pages/ScreenshotPage');
+  5  | // Define the test case and assign a descriptive name.
+  6  | test('test', async ({ page }) => {
+  7  |    // Instantiate the screenshot class
+  8  |     const screenshotPage = new ScreenshotPage(page);
+  9  |   // Navigate the browser to the target test page URL.
+  10 |   await page.goto('https://demowebshop.tricentis.com/');
+  11 |   // 4. Take screenshot after open URL
+  12 |     await screenshotPage.takeRandomScreenshot(true);
+  13 |   // Assert that the expected element is visible on the page.
+  14 |   await expect(page.getByRole('link', { name: 'Tricentis Demo Web Shop' })).toBeVisible();
+  15 |   //click on home page button computers
+  16 |   // Click the element to trigger the next user action.
+  17 |     await screenshotPage.takeRandomScreenshot(true);
+  18 |   await page.getByRole('link', { name: 'Computers' }).first().click();
+  19 |     await screenshotPage.takeRandomScreenshot(true);
+  20 |   // Click the element to trigger the next user action.
+  21 |   await page.getByRole('link', { name: 'Desktops' }).first().click();
+  22 |     await screenshotPage.takeRandomScreenshot(true);
+  23 |   // Assert that the expected element is visible on the page.
+  24 |   await expect(page.getByRole('heading', { name: 'Desktops' })).toBeVisible();
+  25 |     await screenshotPage.takeRandomScreenshot(true);
+  26 |   // Assert that the expected element is visible on the page.
+  27 |   await expect(page.locator('.item-box').first()).toBeVisible();
+  28 |     await screenshotPage.takeRandomScreenshot(true);
+  29 |   // Click the element to trigger the next user action.
+  30 |   await page.getByRole('button', { name: 'Add to cart' }).first().click();
+  31 |    await screenshotPage.takeRandomScreenshot(true);
+  32 |   // Assert that the expected element is visible on the page.
+> 33 |   await expect(page.getByText('Build your own cheap computer Build it Availability: In stock Free shipping 841')).toBeVisible();
+     |                                                                                                                   ^ Error: expect(locator).toBeVisible() failed
+  34 |   // Click the element to trigger the next user action.
+  35 |   await page.getByRole('textbox', { name: 'Qty:' }).click();
+  36 |    await screenshotPage.takeRandomScreenshot(true);
+  37 |   // Fill the target input field with the specified value.
+  38 |   await page.getByRole('textbox', { name: 'Qty:' }).fill('2');
+  39 |    await screenshotPage.takeRandomScreenshot(true);
+  40 |   // Click the element to trigger the next user action.
+  41 |   await page.locator('#add-to-cart-button-72').click();
+  42 |   // Assert that the expected element is visible on the page.
+  43 |   await expect(page.getByText('The product has been added to')).toBeVisible();
+  44 |   // Assert that the expected element is visible on the page.
+  45 |   await expect(page.getByRole('link', { name: 'Shopping cart (2)' })).toBeVisible();
+  46 |   // Click the element to trigger the next user action.
+  47 |   await page.getByRole('link', { name: 'Shopping cart (2)' }).click();
+  48 |    await screenshotPage.takeRandomScreenshot(true);
+  49 |   // Click the element to trigger the next user action.
+  50 |   await page.getByRole('button', { name: 'Checkout' }).click();
+  51 |   // Assert that the expected element is visible on the page.
+  52 |   await expect(page.getByText('Please accept the terms of')).toBeVisible();
+  53 |    await screenshotPage.takeRandomScreenshot(true);
+  54 |   // Click the element to trigger the next user action.
+  55 |   await page.getByRole('button', { name: 'close' }).click();
+  56 |    await screenshotPage.takeRandomScreenshot(true);
+  57 |   // Toggle the checkbox or option input.
+  58 |   await page.locator('#termsofservice').check();
+  59 |   // Click the element to trigger the next user action.
+  60 |   await page.getByRole('button', { name: 'Checkout' }).click();
+  61 |   // Assert that the expected element is visible on the page.
+  62 |   await expect(page.getByRole('heading', { name: 'Welcome, Please Sign In!' })).toBeVisible();
+  63 |   // Click the element to trigger the next user action.
+  64 |   await page.getByText('Returning Customer').click();
+  65 |   // Click the element to trigger the next user action.
+  66 |   await page.getByRole('textbox', { name: 'Email:' }).click();
+  67 |   // Fill the target input field with the specified value.
+  68 |   await page.getByRole('textbox', { name: 'Email:' }).fill('datta.ssl33@gmail.com');
+  69 |   // Click the element to trigger the next user action.
+  70 |   await page.getByRole('textbox', { name: 'Password:' }).click();
+  71 |   // Fill the target input field with the specified value.
+  72 |   await page.getByRole('textbox', { name: 'Password:' }).fill('Datta@123');
+  73 |   // Click the element to trigger the next user action.
+  74 |   await page.getByRole('button', { name: 'Log in' }).click();
+  75 |    await screenshotPage.takeRandomScreenshot(true);
+  76 |   // Assert that the expected element is visible on the page.
+  77 |   await expect(page.getByText('Login was unsuccessful. Please correct the errors and try again. No customer')).toBeVisible();
+  78 |    await screenshotPage.takeRandomScreenshot(true);
+  79 |   //close the browser 
+  80 |   // Close the current page or browser at the end of the test.
+  81 |   await page.close();
+  82 | });
+  83 | 
+```
