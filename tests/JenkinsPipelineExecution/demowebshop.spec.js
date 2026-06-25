@@ -76,6 +76,6 @@ test('test', async ({ page }) => {
   await expect(page.getByText('Login was unsuccessful. Please correct the errors and try again. No customer')).toBeVisible();
    await screenshotPage.takeRandomScreenshot(true);
   //close the browser 
-  // Close the current page or browser at the end of the test.
+  await page.close();
   
 });
