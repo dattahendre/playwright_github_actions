@@ -47,7 +47,7 @@ test('Border test case', async ({ page }) => {
     // Click the element to trigger the next user action.
     await page.getByTitle('Log out').click();
     // close the browser after test case execution
-
+await page.close();
     
 });
 
