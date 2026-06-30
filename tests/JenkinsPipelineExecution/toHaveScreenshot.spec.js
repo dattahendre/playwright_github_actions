@@ -6,9 +6,10 @@ test('visual comparion in playwright',async({page})=>{
 
   const form=await page.locator('nb-card',{hasText:'Using the Grid'})
   
-await form.getByRole('radio',{name:'Option 2'}).check({force:true})
+await form.getByRole('radio',{name:'Option 1'}).check({force:true})
 //write test step for comparion 
 await expect(form).toHaveScreenshot();
+await page.close();
 
 });
 

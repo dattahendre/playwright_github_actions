@@ -1,0 +1,2 @@
+D:\Swamini\Playwright\tests\JenkinsPipelineExecution\toHaveScreenshot.spec.js-snapshots\visual-comparion-in-playwright-1-chromium-win32.png is re-generated, writing actual.
+D:\Swamini\Playwright\tests\JenkinsPipelineExecution\toHaveScreenshot.spec.js-snapshots\visual-comparion-in-playwright-1-chromium-win32.png is re-generated, writing actual.

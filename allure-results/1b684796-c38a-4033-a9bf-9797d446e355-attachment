@@ -1,0 +1,89 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: JenkinsPipelineExecution\errormessage.spec.js >> Verify error message for invalid login
+- Location: tests\JenkinsPipelineExecution\errormessage.spec.js:6:5
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: getByPlaceholder('Username')
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" with timeout 5000ms
+  - waiting for getByPlaceholder('Username')
+
+```
+
+# Test source
+
+```ts
+  1  | // Import Playwright test helpers and any required libraries.
+  2  | import { test, expect } from '@playwright/test';
+  3  | // 1. Import your Screenshot POM class (adjust path if your folders are structured differently)
+  4  | const { ScreenshotPage } = require('../pages/ScreenshotPage');
+  5  | // Define the test case and assign a descriptive name.
+  6  | test('Verify error message for invalid login', async ({ page }) => {
+  7  |   // Navigate to the OrangeHRM login page
+  8  |   // Navigate the browser to the target test page URL.
+  9  |   await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login', {
+  10 |     waitUntil: 'domcontentloaded',
+  11 |     timeout: 60000,
+  12 |   });
+  13 | // Instantiate the screenshot class
+  14 |     const screenshotPage = new ScreenshotPage(page);
+  15 |   // verify the login form is visible on the page
+  16 |   // Assert that the expected element is visible on the page.
+> 17 |   await expect(page.getByPlaceholder('Username')).toBeVisible();
+     |                                                   ^ Error: expect(locator).toBeVisible() failed
+  18 |   await screenshotPage.takeRandomScreenshot(true);
+  19 |   // Attempt to log in with invalid credentials
+  20 |   //enter username
+  21 |   // Fill the target input field with the specified value.
+  22 |   await page.getByPlaceholder('Username').fill('Admin',{delay:8000});
+  23 |   await screenshotPage.takeRandomScreenshot(true);
+  24 |   //enter password
+  25 |   // Fill the target input field with the specified value.
+  26 |   await page.getByPlaceholder('Password').fill('invalid_password',{delay:5000});
+  27 |   await screenshotPage.takeRandomScreenshot(true);
+  28 |   //click login button
+  29 |   // Click the element to trigger the next user action.
+  30 |   await page.getByRole('button', { name: 'Login' }).click();
+  31 |   //store error message in a variable
+  32 |   await screenshotPage.takeRandomScreenshot(true);
+  33 |   // Store a value, element handle, or generated data for later use.
+  34 |   const errorMessage = await page.locator("//p[@class='oxd-text oxd-text--p oxd-alert-content-text']").textContent();
+  35 |   //print error message in console
+  36 |   // Log information to the console for debugging or verification.
+  37 |   await screenshotPage.takeRandomScreenshot(true);
+  38 |   console.log("Error message displayed:", errorMessage);
+  39 |   await screenshotPage.takeRandomScreenshot(true);
+  40 |   //assert the error message is correct
+  41 |   // Assert the exact text of the element matches the expected string.
+  42 |   await expect(page.locator("//p[@class='oxd-text oxd-text--p oxd-alert-content-text']")).toHaveText('Invalid credentials');
+  43 |   //validate error message part of the string
+  44 |   // Assert a page condition with Playwright matchers.
+  45 |   await screenshotPage.takeRandomScreenshot(true);
+  46 |   await expect(errorMessage.includes('Invalid')).toBeTruthy();
+  47 |   await screenshotPage.takeRandomScreenshot(true);
+  48 |   //validate exact error message
+  49 |   // Assert a page condition with Playwright matchers.
+  50 |   await expect(errorMessage).toBe('Invalid credentials');
+  51 |   await screenshotPage.takeRandomScreenshot(true);
+  52 |   //another way to validate exact error message
+  53 |   // Assert a page condition with Playwright matchers.
+  54 |   await expect(errorMessage==='Invalid credentials').toBeTruthy();
+  55 |   await screenshotPage.takeRandomScreenshot(true);
+  56 | });
+  57 | 
+```
