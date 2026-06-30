@@ -9,7 +9,7 @@ test.skip('visual comparion in playwright',async({page})=>{
 await form.getByRole('radio',{name:'Option 1'}).check({force:true})
 //write test step for comparion 
 await expect(form).toHaveScreenshot();
-await page.close();
+//await page.close();
 
 });
 
