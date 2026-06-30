@@ -1,0 +1,183 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Login.spec.js >> Enter username and password and click on login button
+- Location: tests\Login.spec.js:14:5
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: getByRole('heading', { name: 'Dashboard' })
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" with timeout 5000ms
+  - waiting for getByRole('heading', { name: 'Dashboard' })
+    - waiting for navigation to finish...
+    - navigated to "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
+
+```
+
+```yaml
+- img "company-branding"
+- heading "Login" [level=5]
+- alert:
+  - text: 
+  - paragraph: Invalid credentials
+- paragraph: "Username : Admin"
+- paragraph: "Password : admin123"
+- text:  Username
+- textbox "Username"
+- text:  Password
+- textbox "Password"
+- button "Login"
+- paragraph: Forgot your password?
+- link:
+  - /url: https://www.linkedin.com/company/orangehrm/mycompany/
+- link:
+  - /url: https://www.facebook.com/OrangeHRM/
+- link:
+  - /url: https://twitter.com/orangehrm?lang=en
+- link:
+  - /url: https://www.youtube.com/c/OrangeHRMInc
+- paragraph: OrangeHRM OS 5.8
+- paragraph:
+  - text: © 2005 - 2026
+  - link "OrangeHRM, Inc":
+    - /url: http://www.orangehrm.com
+  - text: . All rights reserved.
+- img "orangehrm-logo"
+```
+
+# Test source
+
+```ts
+  1   | // Import Playwright test helpers and any required libraries.
+  2   | import { test, expect } from '@playwright/test';
+  3   | 
+  4   | //addmin require to read data from json file path of json file("../tests/TestData.TestData.json")
+  5   | //using using JOSN stringfy methos convert json value into Jsonstring(JSON.stringify(require("../tests/TestData.TestData.json")))
+  6   | //JOSN parse - convert string into objrct 
+  7   | const readdata=JSON.parse(JSON.stringify(require("../tests/TestData/TestData.json")))
+  8   | console.log(readdata);
+  9   | // Force a clean context to ensure you are on the login page
+  10  | // Configure test-level fixtures or browser state before running the test.
+  11  | test.use({ storageState: { cookies: [], origins: [] } });
+  12  | 
+  13  | // Define the test case and assign a descriptive name.
+  14  | test('Enter username and password and click on login button', async ({ page }) => {
+  15  |   // Navigate to the OrangeHRM login page
+  16  |   // Navigate the browser to the target test page URL.
+  17  |   await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login', {
+  18  |     waitUntil: 'domcontentloaded',
+  19  |     timeout: 60000,
+  20  |   });
+  21  | 
+  22  |   // Fill the username field
+  23  |   // Fill the target input field with the specified value.
+  24  |   await page.getByPlaceholder('Username').fill('readdata.username');
+  25  | 
+  26  |   // Fill the password field
+  27  |   // Fill the target input field with the specified value.
+  28  |   await page.getByPlaceholder('Password').fill(readdata.password);
+  29  | 
+  30  |   // Take a screenshot after entering credentials
+  31  |   // Capture a screenshot of the current browser state.
+  32  |   await page.screenshot({ path: 'screenshot/login-success.png' });
+  33  | 
+  34  |   // Click the Login button
+  35  |   // Click the element to trigger the next user action.
+  36  |   await page.getByRole('button', { name: 'Login' }).click();
+  37  | 
+  38  |   // Verify the Dashboard heading is visible after login
+  39  |   // Assert that the expected element is visible on the page.
+> 40  |   await expect(page.getByRole('heading', { name: 'Dashboard' })).toBeVisible();
+      |                                                                  ^ Error: expect(locator).toBeVisible() failed
+  41  | 
+  42  |   //verify the URL after login
+  43  |   // Store a value, element handle, or generated data for later use.
+  44  |   const currentURL = await page.url();
+  45  |   // Log information to the console for debugging or verification.
+  46  |   console.log("Current URL after login:", currentURL);
+  47  |   // Verify the browser navigated to the expected URL.
+  48  |   await expect(page).toHaveURL(currentURL);
+  49  |   //await expect(page).toHaveURL('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index');
+  50  | 
+  51  |   // Take a screenshot of the dashboard
+  52  |   // Capture a screenshot of the current browser state.
+  53  |   await page.screenshot({ path: 'screenshot/login-dashboard.png' });
+  54  | 
+  55  |   // Find the Search input field
+  56  |   // Store a value, element handle, or generated data for later use.
+  57  |   const searchInput = page.getByPlaceholder('Search');
+  58  | 
+  59  |   // Click the Search input to focus it
+  60  |   // Click the element to trigger the next user action.
+  61  |   await searchInput.click();
+  62  | 
+  63  |   // Enter the search term 'Admin'
+  64  |   // Fill the target input field with the specified value.
+  65  |   await searchInput.fill('Admin');
+  66  | 
+  67  |   // Click the Admin link from the search results
+  68  |   // Click the element to trigger the next user action.
+  69  |   await page.getByRole('link', { name: /Admin/i }).click();
+  70  | 
+  71  |   // Assert that the expected element is visible on the page.
+  72  |   await expect(page.getByRole('heading', { name: 'System Users' })).toBeVisible();
+  73  |   //enter username in search box
+  74  | //
+  75  | // Store a value, element handle, or generated data for later use.
+  76  | const usernameInput = page.locator('input[class*="oxd-input"]').nth(1); // First input in the search form
+  77  | // Click the element to trigger the next user action.
+  78  | await usernameInput.click();
+  79  | // Fill the target input field with the specified value.
+  80  | await usernameInput.fill('Admin');
+  81  |   
+  82  |  // Click to open dropdown
+  83  |  //await page.locator('//div[contains(@class,"oxd-select-text oxd-select-text--active")]').first().click();
+  84  |   // Click the element to trigger the next user action.
+  85  |   await page.getByText('-- Select --').first().click();
+  86  |  
+  87  | // Click the dropdown option "Admin" (inside the listbox)
+  88  | // Click the element to trigger the next user action.
+  89  | await page.getByRole('option', { name: 'Admin' }).click();
+  90  | //enter the employee name in search box
+  91  | // Click the element to trigger the next user action.
+  92  | await page.getByPlaceholder('Type for hints...').click();
+  93  | // Fill the target input field with the specified value.
+  94  | await page.getByPlaceholder('Type for hints...').fill('manda',{delay:1500});
+  95  | //wait for the dropdown options to appear
+  96  | // Wait briefly to allow UI updates or manual observation.
+  97  | await page.waitForTimeout(4000);
+  98  | //slect user from dropdown
+  99  | // Click the element to trigger the next user action.
+  100 | await page.getByRole('option', { name: 'manda' }).first().click();
+  101 | 
+  102 |   // Capture a screenshot of the current browser state.
+  103 |   await page.screenshot({ path: 'screenshot/login-search-admin.png' });
+  104 |  //click on user pfofile icon for logout
+  105 |  // Click the element to trigger the next user action.
+  106 |  await page.locator("//span[@class='oxd-userdropdown-tab']") .click();
+  107 |  //wait for 5 seconsds for the dropdown to appear
+  108 |  // Wait briefly to allow UI updates or manual observation.
+  109 |  await page.waitForTimeout(5000);
+  110 |  //click on logout button
+  111 |  // Click the element to trigger the next user action.
+  112 |  await page.getByRole('menuitem', { name: 'Logout' }).click();
+  113 |   //added page close method
+  114 | await page.close();
+  115 | 
+  116 |   
+  117 | });
+  118 | 
+```

@@ -1,6 +1,11 @@
 // Import Playwright test helpers and any required libraries.
 import { test, expect } from '@playwright/test';
 
+//addmin require to read data from json file path of json file("../tests/TestData.TestData.json")
+//using using JOSN stringfy methos convert json value into Jsonstring(JSON.stringify(require("../tests/TestData.TestData.json")))
+//JOSN parse - convert string into objrct 
+const readdata=JSON.parse(JSON.stringify(require("../TestData/TestData.json")))
+
 // Force a clean context to ensure you are on the login page
 // Configure test-level fixtures or browser state before running the test.
 test.use({ storageState: { cookies: [], origins: [] } });
@@ -16,11 +21,11 @@ test('Enter username and password and click on login button', async ({ page }) =
 
   // Fill the username field
   // Fill the target input field with the specified value.
-  await page.getByPlaceholder('Username').fill('Admin');
+  await page.getByPlaceholder('Username').fill(readdata.username);
 
   // Fill the password field
   // Fill the target input field with the specified value.
-  await page.getByPlaceholder('Password').fill('admin123');
+  await page.getByPlaceholder('Password').fill(readdata.password);
 
   // Take a screenshot after entering credentials
   // Capture a screenshot of the current browser state.
