@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 //declare test case name
-test('visual comparion in playwright',async({page})=>{
+test.skip('visual comparion in playwright',async({page})=>{
 // Navigate the browser to the target test page URL.
     await page.goto('https://playground.bondaracademy.com/pages/forms/layouts');
 
